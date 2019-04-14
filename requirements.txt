@@ -1,3 +1,10 @@
+behave==1.2.6
+behave-django==1.2.0
+coverage==4.5.3
 Django==1.11.15
-dotenv==0.0.5
+django-dotenv==1.4.2
+parse==1.12.0
+parse-type==0.4.2
 pytz==2019.1
+six==1.12.0
+sqlparse==0.3.0
