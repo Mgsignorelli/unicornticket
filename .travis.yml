@@ -1,5 +1,6 @@
 language: python
 addons:
+  artifacts: true
   chrome: stable
 python:
   - "3.4"
