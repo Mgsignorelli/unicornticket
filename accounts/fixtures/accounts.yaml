@@ -1,0 +1,13 @@
+-   model: auth.user
+    pk: 5
+    fields:
+        password: pbkdf2_sha256$36000$zrGQ7FJsPExc$PamOuXyeyKkBSRJfDAYi9TTQ800Wvk9Z08s+yFbw9xY=
+        is_superuser: false
+        username: user
+        first_name: ''
+        last_name: ''
+        email: user@example.com
+        is_staff: false
+        is_active: true
+        groups: []
+        user_permissions: []

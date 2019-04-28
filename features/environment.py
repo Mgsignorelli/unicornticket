@@ -21,6 +21,8 @@ def clean_screenshots(context):
 
 
 def before_all(context):
+    context.fixtures = ['accounts.yaml']
+    context.models = {}
     use_fixture(clean_screenshots, context)
     use_fixture(web_browser, context)
 
