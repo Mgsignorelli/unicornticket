@@ -21,11 +21,16 @@
         </ul>
     </nav>
 
-    <hr> {% if messages %}
-    <div>
-        {% for message in messages %} {{ message }} {% endfor %}
-    </div>
-    {% endif %} {% block content %}{% endblock %}
+    <hr>
+
+    {% if messages %}
+        <div>
+            {% for message in messages %} {{ message }} {% endfor %}
+        </div>
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
 </body>
 
 </html>
