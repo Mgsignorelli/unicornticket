@@ -3,6 +3,9 @@ addons:
   chrome: stable
 python:
   - "3.4"
+before_install:
+  - curl -sL "http://chromedriver.storage.googleapis.com/`curl -sL http://chromedriver.storage.googleapis.com/LATEST_RELEASE`/chromedriver_linux64.zip" -o chromedriver.zip
+  - unzip chromedriver.zip; rm chromedriver.zip; mv chromedriver /usr/bin/chromedriver
 install: "pip install -r requirements.txt"
 script:
   - ./manage.py behave
