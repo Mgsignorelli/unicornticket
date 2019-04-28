@@ -6,13 +6,13 @@ from accounts.forms import UserLoginForm, UserRegistrationForm
 
 def index(request):
     """Returns index page"""
-    return render(request,  'index.html')
+    return render(request, 'index.html')
 
 @login_required
 def logout(request):
     """Logs out a user"""
     auth.logout(request)
-    messages.success(request, "You've successfully logged out!")
+    messages.success(request, "Successfully logged out!")
     return redirect(reverse('index'))
 
 def login(request):
