@@ -42,6 +42,8 @@ def step_impl(context, name):
     context.browser.find_by_css('form[name="' + name + '"] button[type="submit"]').first.click()
 
 
-@then(u'I should be told "{message}"')
-def step_impl(context, message):
-    assert context.browser.is_text_present(message)
+@then(u'I {told} told "{message}"')
+def step_impl(context, told, message):
+    told = told == 'should be'
+    found = context.browser.is_text_present(message)
+    assert told and found or not told and not found
