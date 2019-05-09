@@ -6,6 +6,6 @@ Feature: Creating a ticket as a bug
     When I navigate to create_ticket
     And I enter "test" into the title field
     And I enter "description" into the description field
-    And I enter "status" into the status field
+    And I enter "bug" into the status field
     And I submit the TicketForm form
     Then I should be told "Ticket successfully created!"
