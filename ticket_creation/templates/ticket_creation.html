@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block page_title %}Support Ticket Creation{% endblock %}
+{% block page_heading %}Support Ticket Creation{% endblock %}
+
+{% block content %}
+
+    <form name="TicketForm" method="POST">
+    {{ form.non_field_errors }}
+    {{ form }}
+        {% csrf_token %}
+        <button type="submit">Create a ticket</button>
+    </form>
+{#    <p><a href="{% url 'password_reset' %}">Reset Password</a></p>#}
+
+{% endblock %}
