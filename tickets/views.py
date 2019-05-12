@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
-from ticket_creation.forms import TicketForm
+from tickets.forms import TicketForm
 
 
 @login_required()
