@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from tickets.forms import TicketForm
-from tickets.models import Bug
+from tickets.models import Bug, Feature
 
 
 @login_required()
@@ -17,6 +17,9 @@ def create_ticket(request):
             # ticket = form.save(commit=False)
             if form.cleaned_data['type'] == 'bug':
                 ticket = Bug()
+            elif form.cleaned_data['type'] == 'feature':
+                ticket = Feature()
+
             ticket.status = 'todo'
             ticket.title = form.cleaned_data['title']
             ticket.description = form.cleaned_data['description']
