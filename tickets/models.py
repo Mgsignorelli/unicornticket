@@ -14,6 +14,6 @@ class Ticket(models.Model):
 
     title = models.CharField(max_length=100)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES)
-    description = models.TextField(max_length=250, default='0000000')
+    description = models.TextField(max_length=250, default='')
     creator = models.ForeignKey(User)
     created = models.DateTimeField(default=timezone.now)
