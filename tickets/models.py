@@ -17,3 +17,10 @@ class Ticket(models.Model):
     description = models.TextField(max_length=250, default='')
     creator = models.ForeignKey(User)
     created = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        abstract = True
+
+
+class Bug(Ticket):
+    pass
