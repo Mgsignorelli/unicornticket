@@ -24,5 +24,6 @@ def create_ticket(request):
 
     return render(request, 'ticket_creation.html', {'form': form})
 
+
 def read_ticket(request):
     return render(request, 'ticket_read.html')

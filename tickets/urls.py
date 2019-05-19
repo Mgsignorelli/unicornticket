@@ -1,6 +1,5 @@
-from django.conf.urls import url, include
+from django.conf.urls import url
 from tickets.views import create_ticket, read_ticket
-
 
 urlpatterns = [
     url(r'^ticket/create', create_ticket, name="create_ticket"),
