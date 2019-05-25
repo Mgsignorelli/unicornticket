@@ -1,28 +1,70 @@
 <html>
 
 <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Unicorn Attractor - Ticket System">
+    <meta name="author" content="MGSignorelli">
+
     <title>{% block page_title %}{% endblock %}</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+
+    <!-- Bootstrap Theme Bootswatch -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css"/>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=ABeeZee|Didact+Gothic&display=swap" rel="stylesheet">
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    {% block head_js %}
+    {% endblock head_js %}
 </head>
 
 <body>
-    <h1>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <a class="navbar-brand" href="{% url 'index' %}">Unicorn Ticket System</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+            aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create_ticket' %}">Create a New Ticket</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'registration' %}">Register</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+<div class="container" align="center">
+
+    <h1 class="m-5">
         {% block page_heading %}{% endblock %}
     </h1>
 
-    <nav>
-<ul>
-            {% if user.is_authenticated %}
-            <li><a href="{% url 'create_ticket' %}">Create a New Ticket</a></li>
-            <li><a href="{% url 'profile' %}">Profile</a></li>
-            <li><a href="{% url 'logout' %}">Logout</a></li>
-            {% else %}
-            <li><a href="{% url 'login' %}">Login</a></li>
-            <li><a href="{% url 'registration' %}">Register</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-
-    <hr>
 
     {% if messages %}
         <div>
@@ -32,6 +74,11 @@
 
     {% block content %}
     {% endblock %}
+
+    <footer class="mt-5">
+        <p class="small">by <a href="https://www.micaelasignorelli.com">MiSigno</a>
+    </footer>
+</div>
 </body>
 
 </html>
