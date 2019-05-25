@@ -24,3 +24,7 @@ class Ticket(models.Model):
 
 class Bug(Ticket):
     pass
+
+
+class Feature(Ticket):
+    pass
