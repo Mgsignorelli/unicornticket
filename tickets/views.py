@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from tickets.forms import TicketForm
@@ -27,11 +27,17 @@ def create_ticket(request):
             ticket.save()
             messages.success(request, "Ticket successfully created!")
 
+            return redirect('show_' + form.cleaned_data['type'], id=ticket.id)
+
     else:
         form = TicketForm()
 
     return render(request, 'ticket_create.html', {'form': form})
 
 
-def show_ticket(request):
+def show_bug(request, id):
+    return render(request, 'ticket_show.html')
+
+
+def show_feature(request, id):
     return render(request, 'ticket_show.html')

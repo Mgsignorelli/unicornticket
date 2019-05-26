@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load bootstrap_tags %}
+{% block page_title %}Support Tickets{% endblock %}
+{% block page_heading %}Support Tickets{% endblock %}
+
+{% block content %}
+
+{% for ticket in queryset %}{{ ticket.title }}{% endfor %}
+
+{% endblock %}
