@@ -73,17 +73,22 @@
 </nav>
 
 <div class="container" align="center">
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-dismissible alert-primary">
+            <div class="row">
+                <div class="col-6 offset-3">
+                    {{ message }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
+
 
     <h1 class="m-5">
         {% block page_heading %}{% endblock %}
     </h1>
-
-
-    {% if messages %}
-        <div>
-            {% for message in messages %} {{ message }} {% endfor %}
-        </div>
-    {% endif %}
 
     {% block content %}
     {% endblock %}
