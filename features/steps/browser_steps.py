@@ -21,6 +21,11 @@ def step_imp(context, value, field, form):
     context.browser.choose(field, value)
 
 
+@when(u'I select "{value}" from the choices in the {field} field of the {form} form')
+def step_imp(context, value, field, form):
+    context.browser.select(field, value)
+
+
 @when(u'I enter {model_type} {attribute} {validity} into the {field} field of the {form} form')
 def step_impl(context, model_type, attribute, validity, field, form):
     if model_type == 'my':
