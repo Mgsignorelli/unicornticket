@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
-from tickets.forms import TicketForm
+from tickets.forms import TicketForm, BugForm
 from tickets.models import Bug, Feature
 
 
@@ -36,7 +36,17 @@ def create_ticket(request):
 
 
 def show_bug(request, id):
-    return render(request, 'ticket_show.html')
+    bug = get_object_or_404(Bug, pk=id)
+
+    if request.method == 'POST':
+        form = BugForm(request.POST, instance=bug)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "The bug has been updated")
+
+    form = BugForm(instance=bug)
+    return render(request, 'bug_show.html', {'bug': bug, 'form': form})
 
 
 def show_feature(request, id):
