@@ -1,5 +1,5 @@
 -   model: auth.user
-    pk: 5
+    pk: 1
     fields:
         password: pbkdf2_sha256$36000$zrGQ7FJsPExc$PamOuXyeyKkBSRJfDAYi9TTQ800Wvk9Z08s+yFbw9xY=
         is_superuser: false
