@@ -30,8 +30,8 @@ def create_ticket(request):
     else:
         form = TicketForm()
 
-    return render(request, 'ticket_creation.html', {'form': form})
+    return render(request, 'ticket_create.html', {'form': form})
 
 
-def read_ticket(request):
-    return render(request, 'ticket_read.html')
+def show_ticket(request):
+    return render(request, 'ticket_show.html')

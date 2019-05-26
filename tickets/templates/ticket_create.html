@@ -8,7 +8,7 @@
     <div class="container" align="center">
         <div class="row">
             <div class="col-6 offset-3">
-                <form name="TicketForm" method="POST">
+                <form name="ticket_create" method="POST">
                     {{ form.non_field_errors }}
                     {{ form | as_bootstrap }}
                     {% csrf_token %}
