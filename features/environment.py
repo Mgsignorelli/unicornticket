@@ -6,7 +6,8 @@ from splinter import Browser
 
 @fixture
 def web_browser(context):
-    context.browser = Browser('chrome', headless=True)
+    context.browser = Browser('chrome', headless=True, incognito=True)
+
     yield context.browser
     context.browser.quit()
 
