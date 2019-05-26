@@ -5,32 +5,30 @@
 
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-8 offset-2">
-                <table class="table table-">
-                    <thead>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <table class="table table-">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th class="text-right">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for bug in bugs %}
                     <tr>
-                        <th>Title</th>
-                        <th>Status</th>
-                        <th class="text-right">Actions</th>
+                        <td>{{ bug.title }}</td>
+                        <td class="text-capitalize">{{ bug.status }}</td>
+                        <td class="text-right">
+                            <a class="btn btn-sm btn-outline-primary" href="{% url 'show_bug' bug.id %}">
+                                View
+                            </a>
+                        </td>
                     </tr>
-                    </thead>
-                    <tbody>
-                    {% for bug in bugs %}
-                        <tr>
-                            <td>{{ bug.title }}</td>
-                            <td class="text-capitalize">{{ bug.status }}</td>
-                            <td class="text-right">
-                                <a class="btn btn-sm btn-outline-primary" href="{% url 'show_bug' bug.id %}">
-                                    View
-                                </a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 {% endblock %}

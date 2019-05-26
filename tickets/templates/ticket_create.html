@@ -5,17 +5,14 @@
 
 
 {% block content %}
-    <div class="container" align="center">
-        <div class="row">
-            <div class="col-6 offset-3">
-                <form name="ticket_create" method="POST">
-                    {{ form.non_field_errors }}
-                    {{ form | as_bootstrap }}
-                    {% csrf_token %}
-                    <button class="btn btn-outline-primary btn-sm" type="submit">Create a ticket</button>
-                </form>
-            </div>
+    <div class="row">
+        <div class="col-6 offset-3">
+            <form name="ticket_create" method="POST">
+                {{ form.non_field_errors }}
+                {{ form | as_bootstrap }}
+                {% csrf_token %}
+                <button class="btn btn-outline-primary btn-sm" type="submit">Create a ticket</button>
+            </form>
         </div>
     </div>
-
 {% endblock %}
