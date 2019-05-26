@@ -1,0 +1,39 @@
+/* ............................General */
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Roboto Slab', serif;
+    background-image: url("https://webadda.net/wp-content/uploads/2018/10/unicorn-drawing-easy-luxury-unicorn-head-silhouette-my-drawings-in-2018-pinterest-of-unicorn-drawing-easy.jpg;");
+    background-repeat: no-repeat;
+    background-size: contain, cover;
+    background-position: center;
+    /*z-index: -2;*/
+    /*opacity: 0.4;*/
+}
+
+
+h1 {
+    font-family: 'Abril Fatface', cursive;
+}
+
+h4 {
+    font-family: 'Didact Gothic', sans-serif;
+}
+
+/* ............................Navbar */
+
+/*.navbar-dark {*/
+/*    -webkit-transition: all 0.35s;*/
+/*    -moz-transition: all 0.35s;*/
+/*    transition: all 0.35s;*/
+/*}*/
+
+/* Smaller screen settings */
+@media only screen and (max-width: 800px) {
+    body {
+        height: 100%;
+        width: 100%;
+    }
+}
