@@ -1,13 +1,21 @@
 {% extends 'base.html' %}
-{% block page_title %}Support Ticket Creation{% endblock %}
-{% block page_heading %}Support Ticket Creation{% endblock %}
+{% load bootstrap_tags %}
+{% block page_title %} Support Ticket Creation {% endblock %}
+{% block page_heading %} Support Ticket Creation {% endblock %}
+
 
 {% block content %}
-    <form name="TicketForm" method="POST">
-    {{ form.non_field_errors }}
-    {{ form }}
-        {% csrf_token %}
-        <button type="submit">Create a ticket</button>
-    </form>
+    <div class="container" align="center">
+        <div class="row">
+            <div class="col-6 offset-3">
+                <form name="TicketForm" method="POST">
+                    {{ form.non_field_errors }}
+                    {{ form | as_bootstrap }}
+                    {% csrf_token %}
+                    <button class="btn btn-outline-primary btn-sm" type="submit">Create a ticket</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
