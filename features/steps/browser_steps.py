@@ -1,6 +1,11 @@
 from behave import *
 
 
+@when(u'I navigate to {destination} with id {id}')
+def step_impl(context, destination, id):
+    context.browser.visit(context.get_url(destination, id=id))
+
+
 @when(u'I navigate to {destination}')
 def step_impl(context, destination):
     context.browser.visit(context.get_url(destination))
