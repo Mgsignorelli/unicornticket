@@ -46,3 +46,8 @@ def show_feature(request, id):
 def index_bug(request):
     bugs = Bug.objects.all()
     return render(request, 'index_bug.html', {'bugs': bugs})
+
+
+def index_feature(request):
+    features = Feature.objects.all()
+    return render(request, 'index_feature.html', {'features': features})
