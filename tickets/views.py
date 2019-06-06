@@ -37,6 +37,7 @@ def create_ticket(request):
 
 def show_bug(request, id):
     bug = get_object_or_404(Bug, pk=id)
+    user = auth.get_user(request)
 
     if request.method == 'POST':
         form = BugForm(request.POST, instance=bug)
@@ -46,7 +47,8 @@ def show_bug(request, id):
             messages.success(request, "The bug has been updated")
 
     form = BugForm(instance=bug)
-    return render(request, 'bug_show.html', {'bug': bug, 'form': form})
+    has_voted = True if user.is_authenticated and bug.bugvote_set.filter(voter_id__exact=user.id).count() > 0 else False
+    return render(request, 'bug_show.html', {'bug': bug, 'form': form, 'user_has_voted': has_voted})
 
 
 @login_required()

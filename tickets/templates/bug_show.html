@@ -14,16 +14,24 @@
             </form>
         </div>
         <div class="col-8 offset-2">
+            {% if user_has_voted %}
+
                 <form name="bug_vote_down" method="post" action="{% url 'vote_bug' bug.id 'down' %}">
                     {% csrf_token %}
 
                     <button type="submit">Downvote</button>
                 </form>
+                {% else %}
                 <form name="bug_vote_up" method="post" action="{% url 'vote_bug' bug.id 'up' %}">
                     {% csrf_token %}
 
                     <button type="submit">Upvote</button>
                 </form>
+            {% endif %}
+
+            {{ bug.bugvote_set.count }}
         </div>
     </div>
+
+
 {% endblock %}
