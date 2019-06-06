@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load bootstrap_tags %}
+{% block page_title %}{{ feature.title }}{% endblock %}
+{% block page_heading %}{{ feature.title }}{% endblock %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-8 offset-2">
+            <form name="feature_edit" method="post">
+                {% csrf_token %}
+                {{ form | as_bootstrap }}
+                <button class="btn btn-outline-primary btn-sm" type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

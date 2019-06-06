@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load bootstrap_tags %}
+{% block page_title %}Feature{% endblock %}
+{% block page_heading %}Feature{% endblock %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-8 offset-2">
+            <table class="table table-">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th class="text-right">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for feature in features %}
+                    <tr>
+                        <td>{{ feature.title }}</td>
+                        <td class="text-capitalize">{{ feature.status }}</td>
+                        <td class="text-right">
+                            <a class="btn btn-sm btn-outline-primary" href="{% url 'show_feature' feature.id %}">
+                                View
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

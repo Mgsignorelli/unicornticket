@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
-from tickets.forms import TicketForm
+from tickets.forms import TicketForm, BugForm, FeatureForm
 from tickets.models import Bug, Feature
 
 
@@ -27,11 +27,47 @@ def create_ticket(request):
             ticket.save()
             messages.success(request, "Ticket successfully created!")
 
+            return redirect('show_' + form.cleaned_data['type'], id=ticket.id)
+
     else:
         form = TicketForm()
 
-    return render(request, 'ticket_creation.html', {'form': form})
+    return render(request, 'ticket_create.html', {'form': form})
 
 
-def read_ticket(request):
-    return render(request, 'ticket_read.html')
+def show_bug(request, id):
+    bug = get_object_or_404(Bug, pk=id)
+
+    if request.method == 'POST':
+        form = BugForm(request.POST, instance=bug)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "The bug has been updated")
+
+    form = BugForm(instance=bug)
+    return render(request, 'bug_show.html', {'bug': bug, 'form': form})
+
+
+def show_feature(request, id):
+    feature = get_object_or_404(Feature, pk=id)
+
+    if request.method == 'POST':
+        form = FeatureForm(request.POST, instance=feature)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "The feature has been updated")
+
+    form = FeatureForm(instance=feature)
+    return render(request, 'feature_show.html', {'feature': feature, 'form': form})
+
+
+def index_bug(request):
+    bugs = Bug.objects.all()
+    return render(request, 'bug_index.html', {'bugs': bugs})
+
+
+def index_feature(request):
+    features = Feature.objects.all()
+    return render(request, 'feature_index.html', {'features': features})

@@ -1,0 +1,7 @@
+-   model: tickets.Feature
+    pk: 1
+    fields:
+      title: "A new feature"
+      status: "todo"
+      description: "a new feature to test the system with"
+      creator_id: 1

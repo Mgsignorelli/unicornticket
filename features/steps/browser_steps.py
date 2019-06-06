@@ -1,45 +1,55 @@
 from behave import *
 
 
+@when(u'I navigate to {destination} with id {id}')
+def step_impl(context, destination, id):
+    context.browser.visit(context.get_url(destination, id=id))
+
+
 @when(u'I navigate to {destination}')
 def step_impl(context, destination):
     context.browser.visit(context.get_url(destination))
 
 
-@when(u'I enter "{value}" into the {field} field')
-def step_imp(context, value, field):
-    context.browser.fill(field, value)
+@when(u'I enter "{value}" into the {field} field of the {form} form')
+def step_imp(context, value, field, form):
+    context.browser.fill_form({field: value}, name=form)
 
 
-@when(u'I choose "{value}" from the choices in the {field} field')
-def step_imp(context, value, field):
+@when(u'I choose "{value}" from the choices in the {field} field of the {form} form')
+def step_imp(context, value, field, form):
     context.browser.choose(field, value)
 
 
-@when(u'I enter {model_type} {attribute} {validity} into the {field} field')
-def step_impl(context, model_type, attribute, validity, field):
+@when(u'I select "{value}" from the choices in the {field} field of the {form} form')
+def step_imp(context, value, field, form):
+    context.browser.select(field, value)
+
+
+@when(u'I enter {model_type} {attribute} {validity} into the {field} field of the {form} form')
+def step_impl(context, model_type, attribute, validity, field, form):
     if model_type == 'my':
         model = context.model
     else:
         model = context.models[model_type]
 
     if validity == 'correctly':
-        context.browser.fill(field, getattr(model, attribute))
+        context.browser.fill_form({field: getattr(model, attribute)}, name=form)
     else:
-        context.browser.fill(field, 'random incorrect string')
+        context.browser.fill_form({field: 'random incorrect string'}, name=form)
 
 
-@when(u'I enter {model_type} {attribute} {validity}')
-def step_impl(context, model_type, attribute, validity):
+@when(u'I enter {model_type} {attribute} {validity} in the {form} form')
+def step_impl(context, model_type, attribute, validity, form):
     if model_type == 'my':
         model = context.model
     else:
         model = context.models[model_type]
 
     if validity == 'correctly':
-        context.browser.fill(attribute, getattr(model, attribute))
+        context.browser.fill_form({attribute: getattr(model, attribute)}, name=form)
     else:
-        context.browser.fill(attribute, 'random incorrect string')
+        context.browser.fill_form({attribute: 'random incorrect string'}, name=form)
 
 
 @when(u'I submit the {name} form')

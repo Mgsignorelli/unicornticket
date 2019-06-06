@@ -6,7 +6,8 @@ from splinter import Browser
 
 @fixture
 def web_browser(context):
-    context.browser = Browser('chrome', headless=True)
+    context.browser = Browser('chrome', headless=True, incognito=True)
+
     yield context.browser
     context.browser.quit()
 
@@ -21,7 +22,7 @@ def clean_screenshots(context):
 
 
 def before_all(context):
-    context.fixtures = ['accounts.yaml']
+    context.fixtures = ['accounts.yaml', 'bugs.yaml', 'features.yaml']
     context.models = {}
     use_fixture(clean_screenshots, context)
     use_fixture(web_browser, context)

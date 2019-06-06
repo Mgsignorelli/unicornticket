@@ -5,10 +5,11 @@ body {
     height: 100%;
     width: 100%;
     font-family: 'Roboto Slab', serif;
-    background-image: url("https://webadda.net/wp-content/uploads/2018/10/unicorn-drawing-easy-luxury-unicorn-head-silhouette-my-drawings-in-2018-pinterest-of-unicorn-drawing-easy.jpg;");
+    /*background-image: url("https://webadda.net/wp-content/uploads/2018/10/unicorn-drawing-easy-luxury-unicorn-head-silhouette-my-drawings-in-2018-pinterest-of-unicorn-drawing-easy.jpg;");*/
     background-repeat: no-repeat;
     background-size: contain, cover;
     background-position: center;
+
     /*z-index: -2;*/
     /*opacity: 0.4;*/
 }
