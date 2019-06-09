@@ -2,11 +2,14 @@ import os
 from behave import *
 from behave.model_core import Status
 from splinter import Browser
-
+from selenium import webdriver
 
 @fixture
 def web_browser(context):
-    context.browser = Browser('chrome', headless=True, incognito=True)
+    options = webdriver.ChromeOptions()
+    options.add_argument('window-size=1920,1080')
+
+    context.browser = Browser('chrome', headless=True, incognito=True, options=options)
 
     yield context.browser
     context.browser.quit()
