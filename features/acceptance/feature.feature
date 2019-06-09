@@ -20,3 +20,11 @@ Feature: Creating and working with Features
     And I select "todo" from the choices in the status field of the feature_edit form
     And I submit the feature_edit form
     Then I should be told "The feature has been updated"
+
+  Scenario: Voting on a Bug
+    Given I am a user with email of user@example.com
+    And I am logged in
+    When I navigate to show_feature with id 1
+    And I click on the upvote button
+    Then I should be told "Thank you for your vote"
+
