@@ -13,5 +13,17 @@
                 <button class="btn btn-outline-primary btn-sm" type="submit">Save Changes</button>
             </form>
         </div>
+        <div class="col-8 offset-2" align="center">
+            {% if user_has_voted %}
+            {% else %}
+                <form name="feature_vote" method="post" action="{% url 'vote_feature' feature.id %}">
+                    {% csrf_token %}
+
+                    <button type="submit" id="upvote"><h5>Upvote</h5></button>
+                </form>
+            {% endif %}
+
+            {{ feature.featurevote_set.count }}
+        </div>
     </div>
 {% endblock %}

@@ -1,6 +1,6 @@
 from django import forms
 
-from tickets.models import Bug, Feature, Vote, BugVote
+from tickets.models import Bug, Feature
 
 
 class TicketForm(forms.Form):
@@ -38,5 +38,3 @@ class FeatureForm(forms.ModelForm):
         model = Feature
         fields = ['title', 'description', 'status']
 
-class BugVote(forms.ModelForm):
-    """A form for voting for a bug"""

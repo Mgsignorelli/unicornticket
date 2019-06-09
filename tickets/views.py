@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from tickets.forms import TicketForm, BugForm, FeatureForm
-from tickets.models import Bug, Feature, BugVote
+from tickets.models import Bug, Feature, BugVote, FeatureVote
 
 
 @login_required()
@@ -84,6 +84,7 @@ def vote_bug(request, id, direction):
 
 def show_feature(request, id):
     feature = get_object_or_404(Feature, pk=id)
+    user = auth.get_user(request)
 
     if request.method == 'POST':
         form = FeatureForm(request.POST, instance=feature)
@@ -93,7 +94,32 @@ def show_feature(request, id):
             messages.success(request, "The feature has been updated")
 
     form = FeatureForm(instance=feature)
-    return render(request, 'feature_show.html', {'feature': feature, 'form': form})
+    has_voted = True if user.is_authenticated and feature.featurevote_set.filter(
+        voter_id__exact=user.id).count() > 0 else False
+    return render(request, 'feature_show.html', {'feature': feature, 'form': form, 'user_has_voted': has_voted})
+
+
+@login_required()
+def vote_feature(request, id):
+    feature = get_object_or_404(Feature, pk=id)
+
+    if request.method == 'POST':
+        user = auth.get_user(request)
+        votes = feature.featurevote_set.filter(voter_id__exact=user.id)
+
+        if len(votes) == 0:
+            vote = FeatureVote()
+            vote.voter = user
+            vote.feature = feature
+            vote.save()
+            messages.success(request, "Thank you for your vote")
+        else:
+            messages.error(request, "You have already voted for this feature")
+
+    else:
+        messages.error(request, "You have to post")
+
+    return redirect('show_feature', id=feature.id)
 
 
 def index_bug(request):
