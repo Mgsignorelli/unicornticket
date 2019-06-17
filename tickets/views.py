@@ -94,9 +94,13 @@ def show_feature(request, id):
             messages.success(request, "The feature has been updated")
 
     form = FeatureForm(instance=feature)
+    has_votes = True if user.is_authenticated and user.featurevote_set.filter(
+        feature_id__exact=None).count() > 0 else False
+
     has_voted = True if user.is_authenticated and feature.featurevote_set.filter(
         voter_id__exact=user.id).count() > 0 else False
-    return render(request, 'feature_show.html', {'feature': feature, 'form': form, 'user_has_voted': has_voted})
+    return render(request, 'feature_show.html',
+                  {'feature': feature, 'form': form, 'user_has_voted': has_voted, 'user_has_votes': has_votes})
 
 
 @login_required()
@@ -105,16 +109,17 @@ def vote_feature(request, id):
 
     if request.method == 'POST':
         user = auth.get_user(request)
-        votes = feature.featurevote_set.filter(voter_id__exact=user.id)
+        votes = user.featurevote_set.filter(feature_id__exact=None)
 
-        if len(votes) == 0:
+        if len(votes) > 0:
             vote = FeatureVote()
             vote.voter = user
             vote.feature = feature
             vote.save()
             messages.success(request, "Thank you for your vote")
         else:
-            messages.error(request, "You have already voted for this feature")
+            messages.error(request, "You must buy votes")
+    #         @todo redirect to store page
 
     else:
         messages.error(request, "You have to post")
