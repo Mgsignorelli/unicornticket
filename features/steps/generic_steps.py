@@ -32,5 +32,14 @@ def step_impl(context):
     context.browser.fill('username', context.model.username)
     context.browser.fill('password', context.model.password)
 
-
     context.browser.find_by_css('form[name="login"] button[type="submit"]').first.click()
+
+
+@given(u'I have {number} votes')
+def step_impl(context, number):
+    assert context.model
+    if number == 'some':
+        number = 3
+
+    for i in range(number):
+        context.model.featurevote_set.create()

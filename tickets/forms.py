@@ -37,3 +37,4 @@ class FeatureForm(forms.ModelForm):
     class Meta:
         model = Feature
         fields = ['title', 'description', 'status']
+

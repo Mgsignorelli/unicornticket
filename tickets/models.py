@@ -28,3 +28,18 @@ class Bug(Ticket):
 
 class Feature(Ticket):
     pass
+
+
+class Vote(models.Model):
+    class Meta:
+        abstract = True
+
+
+class BugVote(Vote):
+    bug = models.ForeignKey(Bug)
+    voter = models.ForeignKey(User)
+
+
+class FeatureVote(Vote):
+    feature = models.ForeignKey(Feature)
+    voter = models.ForeignKey(User)

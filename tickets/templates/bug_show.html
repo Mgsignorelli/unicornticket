@@ -13,5 +13,25 @@
                 <button class="btn btn-outline-primary btn-sm" type="submit">Save Changes</button>
             </form>
         </div>
+        <div class="col-8 offset-2" align="center">
+            {% if user_has_voted %}
+
+                <form name="bug_vote_down" method="post" action="{% url 'vote_bug' bug.id 'down' %}">
+                    {% csrf_token %}
+
+                    <button type="submit" id="downvote">Downvote</button>
+                </form>
+                {% else %}
+                <form name="bug_vote_up" method="post" action="{% url 'vote_bug' bug.id 'up' %}">
+                    {% csrf_token %}
+
+                    <button type="submit" id="upvote"><h5>Upvote</h5></button>
+                </form>
+            {% endif %}
+
+            {{ bug.bugvote_set.count }}
+        </div>
     </div>
+
+
 {% endblock %}

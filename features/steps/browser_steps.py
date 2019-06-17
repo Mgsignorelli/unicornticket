@@ -57,6 +57,11 @@ def step_impl(context, name):
     context.browser.find_by_css('form[name="' + name + '"] button[type="submit"]').first.click()
 
 
+@when(u'I click on the {name} button')
+def step_impl(context, name):
+    context.browser.find_by_id(name).first.click()
+
+
 @then(u'I {told} told "{message}"')
 def step_impl(context, told, message):
     told = told == 'should be'

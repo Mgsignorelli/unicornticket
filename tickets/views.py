@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from tickets.forms import TicketForm, BugForm, FeatureForm
-from tickets.models import Bug, Feature
+from tickets.models import Bug, Feature, BugVote, FeatureVote
 
 
 @login_required()
@@ -37,6 +37,7 @@ def create_ticket(request):
 
 def show_bug(request, id):
     bug = get_object_or_404(Bug, pk=id)
+    user = auth.get_user(request)
 
     if request.method == 'POST':
         form = BugForm(request.POST, instance=bug)
@@ -46,11 +47,44 @@ def show_bug(request, id):
             messages.success(request, "The bug has been updated")
 
     form = BugForm(instance=bug)
-    return render(request, 'bug_show.html', {'bug': bug, 'form': form})
+    has_voted = True if user.is_authenticated and bug.bugvote_set.filter(voter_id__exact=user.id).count() > 0 else False
+    return render(request, 'bug_show.html', {'bug': bug, 'form': form, 'user_has_voted': has_voted})
+
+
+@login_required()
+def vote_bug(request, id, direction):
+    bug = get_object_or_404(Bug, pk=id)
+
+    if request.method == 'POST':
+        user = auth.get_user(request)
+        votes = bug.bugvote_set.filter(voter_id__exact=user.id)
+
+        if direction == 'up':
+            if len(votes) == 0:
+                vote = BugVote()
+                vote.voter = user
+                vote.bug = bug
+                vote.save()
+                messages.success(request, "Thank you for your vote")
+            else:
+                messages.error(request, "You have already voted for this bug")
+        elif direction == 'down':
+            if len(votes) > 0:
+                votes.delete()
+            else:
+                messages.error(request, "You have not voted on this bug")
+
+        else:
+            messages.error(request, "Invalid direction")
+    else:
+        messages.error(request, "You have to post")
+
+    return redirect('show_bug', id=bug.id)
 
 
 def show_feature(request, id):
     feature = get_object_or_404(Feature, pk=id)
+    user = auth.get_user(request)
 
     if request.method == 'POST':
         form = FeatureForm(request.POST, instance=feature)
@@ -60,7 +94,37 @@ def show_feature(request, id):
             messages.success(request, "The feature has been updated")
 
     form = FeatureForm(instance=feature)
-    return render(request, 'feature_show.html', {'feature': feature, 'form': form})
+    has_votes = True if user.is_authenticated and user.featurevote_set.filter(
+        feature_id__exact=None).count() > 0 else False
+
+    has_voted = True if user.is_authenticated and feature.featurevote_set.filter(
+        voter_id__exact=user.id).count() > 0 else False
+    return render(request, 'feature_show.html',
+                  {'feature': feature, 'form': form, 'user_has_voted': has_voted, 'user_has_votes': has_votes})
+
+
+@login_required()
+def vote_feature(request, id):
+    feature = get_object_or_404(Feature, pk=id)
+
+    if request.method == 'POST':
+        user = auth.get_user(request)
+        votes = user.featurevote_set.filter(feature_id__exact=None)
+
+        if len(votes) > 0:
+            vote = FeatureVote()
+            vote.voter = user
+            vote.feature = feature
+            vote.save()
+            messages.success(request, "Thank you for your vote")
+        else:
+            messages.error(request, "You must buy votes")
+    #         @todo redirect to store page
+
+    else:
+        messages.error(request, "You have to post")
+
+    return redirect('show_feature', id=feature.id)
 
 
 def index_bug(request):
