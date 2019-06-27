@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'bootstrap4',
     'django_forms_bootstrap',
     'accounts',
-    'tickets'
+    'tickets',
+    'voteshop',
 ]
 
 MIDDLEWARE = [

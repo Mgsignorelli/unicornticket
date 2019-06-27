@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+from voteshop.models import Order
+
 
 class Ticket(models.Model):
     """Ticket model"""
@@ -41,5 +43,6 @@ class BugVote(Vote):
 
 
 class FeatureVote(Vote):
-    feature = models.ForeignKey(Feature)
+    feature = models.ForeignKey(Feature, blank=True, null=True)
     voter = models.ForeignKey(User)
+    order = models.ForeignKey(Order, blank=True, null=True)
