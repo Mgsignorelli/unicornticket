@@ -1,10 +1,5 @@
 from django import forms
-from .models import Order
 
 
-class OrderForm(forms.ModelForm):
-    class Meta:
-        model = Order
-        fields = (
-            'total',
-        )
+class OrderForm(forms.Form):
+    votecount = forms.IntegerField(min_value=1, max_value=100, required=True)
