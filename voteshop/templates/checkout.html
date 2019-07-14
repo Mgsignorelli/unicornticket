@@ -9,11 +9,11 @@
         stripe.redirectToCheckout({
             sessionId: '{{session}}'
         }).then(function (result) {
-            window.location = "{% url 'fail' %}?session_id={{ session }}"
         });</script>
 {% endblock %}
 
 {% block content %}
 
+    <h1>Redirecting to payment gateway...</h1>
 
 {% endblock %}

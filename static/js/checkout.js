@@ -24,6 +24,8 @@
 
                 countInput.value = count;
                 onCountUpdate();
+
+                form.submit();
             });
         });
 
