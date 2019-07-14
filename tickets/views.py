@@ -112,7 +112,7 @@ def vote_feature(request, id):
         votes = user.featurevote_set.filter(feature_id__exact=None)
 
         if len(votes) > 0:
-            vote = FeatureVote()
+            vote = votes[0]
             vote.voter = user
             vote.feature = feature
             vote.save()

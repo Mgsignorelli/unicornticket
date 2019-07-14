@@ -11,13 +11,14 @@
     <meta name="description" content="Unicorn Attractor - Ticket System">
     <meta name="author" content="MGSignorelli">
 
-    <title>{% block page_title %}{% endblock %} - Unicorn Ticket System</title>
+    <title>{% block page_title %}{% endblock %} Unicorn Ticket System</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
 
     <!-- Bootstrap Theme Bootswatch -->
     <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=ABeeZee|Abril+Fatface|Didact+Gothic|Roboto+Slab&display=swap"
@@ -45,29 +46,35 @@
     <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'index_bug' %}">Bugs</a>
+                <a class="nav-link" href="{% url 'index_bug' %}"><i class="fas fa-bug mr-2"></i>Bugs</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'index_feature' %}">Features</a>
+                <a class="nav-link" href="{% url 'index_feature' %}"><i class="fas fa-star mr-2"></i>Features</a>
             </li>
             {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'create_ticket' %}">Create a New Ticket</a>
+                    <a class="nav-link" href="{% url 'create_ticket' %}"><i class="fas fa-exclamation mr-2"></i>Create a
+                        New Ticket</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                    <a class="nav-link" href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    <a class="nav-link" href="{% url 'logout' %}"><i class="fa fa-sign-out mr-2"></i>Logout</a>
                 </li>
             {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    <a class="nav-link" href="{% url 'login' %}"><i class="fas fa-sign-in-alt mr-2"></i>Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'registration' %}">Register</a>
+                    <a class="nav-link" href="{% url 'registration' %}"><i class="fa fa-user-plus mr-2"></i>Register</a>
                 </li>
             {% endif %}
+            <li class="nav-item">
+                <a class="nav-link text-danger" href="{% url 'buyvotes' %}"><i
+                        class="fas fa-money-check-alt mr-2 text-danger"></i>Buy votes</a>
+            </li>
+
         </ul>
     </div>
 </nav>

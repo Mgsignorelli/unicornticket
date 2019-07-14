@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'bootstrap4',
     'django_forms_bootstrap',
     'accounts',
-    'tickets'
+    'tickets',
+    'voteshop',
 ]
 
 MIDDLEWARE = [
@@ -124,6 +125,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
+STRIPE_SECRET = os.getenv('STRIPE_SECRET')
+
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',

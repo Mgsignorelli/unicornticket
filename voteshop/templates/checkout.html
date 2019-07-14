@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% load bootstrap_tags %}
+
+{% block head_js %}
+    <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
+    <script type="text/javascript">
+        const stripe = Stripe('{{ publickey }}');
+        stripe.redirectToCheckout({
+            sessionId: '{{session}}'
+        }).then(function (result) {
+        });</script>
+{% endblock %}
+
+{% block content %}
+
+    <h1>Redirecting to payment gateway...</h1>
+
+{% endblock %}
