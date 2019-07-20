@@ -1,8 +1,32 @@
+import json
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
+from django.utils.timezone import now
+
 from tickets.forms import TicketForm, BugForm, FeatureForm
+from tickets.helpers import get_aggregate_count
 from tickets.models import Bug, Feature, BugVote, FeatureVote
+from UnicornTicketSystem.helpers import datetime_range
+
+
+def index(request):
+    day = datetime_range(now(), 'day')
+    week = datetime_range(now(), 'week')
+    month = datetime_range(now(), 'month')
+
+    chart_data = get_aggregate_count([{
+        'label': 'Today',
+        'range': day,
+    }, {
+        'label': 'This Week',
+        'range': week,
+    }, {
+        'label': 'This Month',
+        'range': month,
+    }])
+
+    return render(request, 'index.html', {'chart_data': json.dumps(chart_data)})
 
 
 @login_required()

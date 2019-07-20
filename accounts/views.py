@@ -4,9 +4,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from accounts.forms import UserLoginForm, UserRegistrationForm
 
-def index(request):
-    """Returns index page"""
-    return render(request, 'index.html')
 
 @login_required
 def logout(request):
@@ -14,6 +11,7 @@ def logout(request):
     auth.logout(request)
     messages.success(request, "Successfully logged out!")
     return redirect(reverse('index'))
+
 
 def login(request):
     """Returns login page"""
@@ -60,6 +58,7 @@ def registration(request):
         registration_form = UserRegistrationForm()
     return render(request, 'registration.html', {
         "registration_form": registration_form})
+
 
 def user_profile(request):
     """Returns user profile"""

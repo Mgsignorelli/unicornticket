@@ -16,7 +16,7 @@ Including another URLconf
 
 from django.conf.urls import url, include
 from django.contrib import admin
-from accounts.views import index
+from tickets.views import index
 from accounts import urls as accounts_urls
 from tickets import urls as tickets_urls
 from voteshop import urls as voteshop_urls
