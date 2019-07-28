@@ -48,3 +48,10 @@ def datetime_range(date, time_range):
         upper['microsecond'] = 999999
 
     return tz.localize(date.replace(**lower)), tz.localize(date.replace(**upper))
+
+
+def get_model_count_for_date_range(model, date_range: tuple):
+    return model.objects.filter(created__range=(
+        date_range[0],
+        date_range[1]
+    )).count()
