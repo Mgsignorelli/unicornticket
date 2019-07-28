@@ -1,4 +1,15 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% load bootstrap_tags %}
 {% block content %}
-    Payment is: {{ status }}
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 mx-auto">
+                <h3 class="main-title">Payment is: {{ status }}</h3>
+            </div>
+        </div>
+    </div>
 {% endblock %}

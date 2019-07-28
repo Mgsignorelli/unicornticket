@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
 {% block page_title %}{{ bug.title }}{% endblock %}
-{% block page_heading %}{{ bug.title }}{% endblock %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 mx-auto">
+            {% block page_heading %}<h3 class="main-title">{{ bug.title }}</h3>{% endblock %}
+        </div>
+    </div>
+</div>
 
 
 {% block content %}
@@ -21,7 +28,7 @@
 
                     <button type="submit" id="downvote">Downvote</button>
                 </form>
-                {% else %}
+            {% else %}
                 <form name="bug_vote_up" method="post" action="{% url 'vote_bug' bug.id 'up' %}">
                     {% csrf_token %}
 

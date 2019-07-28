@@ -1,38 +1,49 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
 {% block page_title %}{{ feature.title }}{% endblock %}
-{% block page_heading %}{{ feature.title }}{% endblock %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 mx-auto">
+            {% block page_heading %}<h3 class="main-title">{{ feature.title }}</h3>{% endblock %}
+        </div>
+    </div>
+</div>
+
 
 
 {% block content %}
-    <div class="row">
-        <div class="col-8 offset-2">
-            <form name="feature_edit" method="post">
-                {% csrf_token %}
-                {{ form | as_bootstrap }}
-                <button class="btn btn-outline-primary btn-sm" type="submit">Save Changes</button>
-            </form>
-        </div>
-        <div class="col-8 offset-2" align="center">
-            {% if user_has_votes %}
-                <form name="feature_vote" method="post" action="{% url 'vote_feature' feature.id %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <form name="feature_edit" method="post">
                     {% csrf_token %}
-
-                    <button type="submit" id="upvote"><h5>Upvote</h5></button>
+                    {{ form | as_bootstrap }}
+                    <button class="btn btn-outline-primary btn-sm" type="submit">Save Changes</button>
                 </form>
-            {% endif %}
+            </div>
+            <div class="col-8 offset-2" align="center">
+                {% if user_has_votes %}
+                    <form name="feature_vote" method="post" action="{% url 'vote_feature' feature.id %}">
+                        {% csrf_token %}
 
-            {{ feature.featurevote_set.count }}
-            {% if not user_has_votes %}
+                        <button type="submit" id="upvote"><h5>Upvote</h5></button>
+                    </form>
+                {% endif %}
 
-                <div class="alert alert-dismissible alert-danger">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>Oh snap!</strong> <a href="{% url 'buyvotes' %}" class="alert-link">buy feature votes</a>
-                    and try
-                    submitting again.
-                </div>
-            {% endif %}
+                {{ feature.featurevote_set.count }}
+                {% if not user_has_votes %}
 
+                    <div class="alert alert-dismissible alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Oh snap!</strong> <a href="{% url 'buyvotes' %}" class="alert-link">buy feature
+                        votes</a>
+                        and try
+                        submitting again.
+                    </div>
+                {% endif %}
+
+            </div>
         </div>
     </div>
 {% endblock %}

@@ -1,40 +1,101 @@
-/* ............................General */
-
-html,
-body {
-    height: 100%;
-    width: 100%;
-    font-family: 'Roboto Slab', serif;
-    /*background-image: url("https://webadda.net/wp-content/uploads/2018/10/unicorn-drawing-easy-luxury-unicorn-head-silhouette-my-drawings-in-2018-pinterest-of-unicorn-drawing-easy.jpg;");*/
-    background-repeat: no-repeat;
-    background-size: contain, cover;
-    background-position: center;
-
-    /*z-index: -2;*/
-    /*opacity: 0.4;*/
-}
-
-
-h1 {
-    font-family: 'Abril Fatface', cursive;
-}
-
-h4 {
-    font-family: 'Didact Gothic', sans-serif;
-}
-
-/* ............................Navbar */
-
-/*.navbar-dark {*/
-/*    -webkit-transition: all 0.35s;*/
-/*    -moz-transition: all 0.35s;*/
-/*    transition: all 0.35s;*/
+/*............................General*/
+/*html,*/
+/*body {*/
+/*    height: 95%;*/
+/*    width: 95%;*/
 /*}*/
 
-/* Smaller screen settings */
+/*............................Main title */
+
+.main-title {
+    background: linear-gradient(to right, #B50457, #FF0279, #ED4E99, #FF9BCA, #FFDCEC);
+    margin: 10px;
+    font-weight: 300;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+/*............................Landing page */
+.btn-create-ticket {
+    background-color: #B50457;
+    font-weight: 800;
+    margin: auto;
+    color: white;
+}
+
+.btn-buy-1-vote {
+    background-color: #FF9BCA;
+    font-weight: 800;
+    margin: auto;
+    color: white;
+}
+
+.btn-buy-5-votes {
+    background-color: #FF9BCA;
+    font-weight: 800;
+    margin: auto;
+    color: white;
+}
+
+.btn-buy-10-votes {
+    background-color: #FF0279;
+    font-weight: 800;
+    margin: auto;
+    color: white;
+}
+
+.btn-buy-custom-votes {
+    background-color: #B50457;
+    font-weight: 800;
+    margin: auto;
+    color: white;
+}
+
+/*.text-buy-votes {*/
+
+/*}*/
+
+.text-create-ticket {
+    background: linear-gradient(to right, #B50457, #FF0279, #ED4E99, #FF9BCA, #FF9BCA);
+    font-weight: 300;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+/*............................Navbar */
+.main-title-nav {
+    background: linear-gradient(to left, #B50457, #FF0279, #ED4E99, #FF9BCA, #FF9BCA);
+    margin: 10px;
+    font-weight: 300;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.navbar-dark {
+    -webkit-transition: all 0.35s;
+    -moz-transition: all 0.35s;
+    transition: all 0.35s;
+}
+
+/*............................Table */
+.table-feature {
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bolder;
+}
+
+.table-bug {
+    background-color: #FF9BCA;
+    color: white;
+    font-weight: 800;
+}
+
+/*.............Smaller screen settings */
+
+
 @media only screen and (max-width: 800px) {
-    body {
-        height: 100%;
-        width: 100%;
-    }
+    /*body {*/
+    /*    height: 100%;*/
+    /*    width: 100%;*/
+    /*}*/
 }

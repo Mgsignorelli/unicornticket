@@ -1,8 +1,16 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
 {% load staticfiles %}
-{% block page_title %} Home Page {% endblock %}
 
+{% block page_title %}Unicorn Attractor Helpdesk{% endblock %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 mx-auto">
+            {% block page_heading %}<h3 class="main-title">Unicorn Attractor Helpdesk</h3>{% endblock %}
+        </div>
+    </div>
+</div>
+<hr>
 {% block head_js %}
     <script>
         var chart_data = {{  chart_data|safe }};
@@ -14,39 +22,60 @@
 
 
 {% block content %}
-    <div class="container my-5">
+    <hr>
+    <div class="container">
         <div class="row">
-            <div class="jumbotron">
+            <div class="col-sm-10 mt-3">
                 <canvas id="breakdown-chart"></canvas>
-                <p class="lead" align="right">
-                    <a class="btn btn-primary btn-lg" href="{% url 'buyvotes' %}" role="button">Buy votes</a>
-                </p>
             </div>
-            <div class="col-8 offset-2">
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2 mt-5" align="center">
 
+                <a class="btn btn-primary btn-sm btn-create-ticket"
+                   href="{% url 'create_ticket' %}"
+                   role="button">Create a Ticket!
+                </a>
             </div>
-            <div class="col">
+        </div>
+        <div class="row">
+            <div class="col-8 offset-2 mt-4 mb-5" align="center">
+
+                <a class="btn btn-primary btn-sm btn-buy-votes"
+                   href="{% url 'buyvotes' %}"
+                   role="button">Buy feature votes
+                </a>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 mt-5 mb-4">
                 <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th scope="col">Maybe</th>
-                        <th scope="col">Like</th>
-                        <th scope="col">This</th>
-                        <th scope="col">MOST VOTES</th>
-                    </tr>
-                    </thead>
+                    {#                    <thead>#}
+                    {#                    <tr>#}
+                    {#                        <th scope="col">Maybe</th>#}
+                    {#                        <th scope="col">Like</th>#}
+                    {#                        <th scope="col">This</th>#}
+                    {#                        <th scope="col">MOST VOTES</th>#}
+                    {#                    </tr>#}
+                    {#                    </thead>#}
                     <tbody>
-                    <tr class="table-active">
-                        <th scope="row">Most voted feature</th>
-                        <td>4 hours this week</td>
-                        <td>Column content</td>
-                        <td>INVEST!</td>
+                    <tr class="table-active table-feature">
+                        <th scope="row"><p>#1 feature</p></th>
+                        <td><p>4 hours this week</p></td>
+                        {#                        <td>Column content</td>#}
+                        {#                        <td>INVEST!</td>#}
                     </tr>
-                    <tr>
-                        <th scope="row">Default</th>
+                    <tr class="table-active table-bug">
+                        <th scope="row">#1 bug</th>
                         <td>Column content</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
+                        {#                        <td>Column content</td>#}
+                        {#                        <td>Column content</td>#}
                     </tr>
                     </tbody>
                 </table>
