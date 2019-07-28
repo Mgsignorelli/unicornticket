@@ -1,7 +1,21 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
 {% block page_title %}{{ user }}'s Profile{% endblock %}
-{% block page_heading %}{{ user }}'s Profile{% endblock %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 mx-auto">
+            {% block page_heading %}<h3 class="main-title">{{ user }}'s Profile</h3>{% endblock %}
+        </div>
+    </div>
+</div>
 {% block content %}
-<p>{{ profile.email }}</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 mt-5" align="center">
+                <p>{{ profile.email }}</p>
+
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -21,8 +21,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=ABeeZee|Abril+Fatface|Didact+Gothic|Roboto+Slab&display=swap"
-          rel="stylesheet">
+    {#    <link href="https://fonts.googleapis.com/css?family=ABeeZee|Abril+Fatface|Didact+Gothic|Roboto+Slab&display=swap"#}
+    {#          rel="stylesheet">#}
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
@@ -34,9 +34,9 @@
 <body>
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mx-auto">
 
-    <a class="navbar-brand" href="{% url 'index' %}">Unicorn Ticket System</a>
+    <a class="main-title-nav navbar-brand" href="{% url 'index' %}">UA | Helpdesk</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
             aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,37 +45,42 @@
 
     <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav mr-auto">
+
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'index_bug' %}"><i class="fas fa-bug mr-2"></i>Bugs</a>
+                <a class="nav-link" href="{% url 'index_bug' %}">Bugs</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'index_feature' %}"><i class="fas fa-star mr-2"></i>Features</a>
+                <a class="nav-link" href="{% url 'index_feature' %}">Features</a>
             </li>
             {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'create_ticket' %}"><i class="fas fa-exclamation mr-2"></i>Create a
+                    <a class="nav-link text-create-ticket" href="{% url 'create_ticket' %}">Create
+                        a
                         New Ticket</a>
                 </li>
+                </ul>
+
+                <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a>
+                    <a class="nav-link" href="{% url 'profile' %}">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}"><i class="fa fa-sign-out mr-2"></i>Logout</a>
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                 </li>
             {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}"><i class="fas fa-sign-in-alt mr-2"></i>Login</a>
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'registration' %}"><i class="fa fa-user-plus mr-2"></i>Register</a>
+                    <a class="nav-link" href="{% url 'registration' %}"></i>Register</a>
                 </li>
+
             {% endif %}
             <li class="nav-item">
-                <a class="nav-link text-danger" href="{% url 'buyvotes' %}"><i
-                        class="fas fa-money-check-alt mr-2 text-danger"></i>Buy votes</a>
+                <a class="nav-link text-create-ticket" href="{% url 'buyvotes' %}">Buy votes</a>
             </li>
 
-        </ul>
+            </ul>
     </div>
 </nav>
 
@@ -84,7 +89,7 @@
     {% for message in messages %}
         <div class="alert alert-dismissible alert-{{ message.tags }}">
             <div class="row">
-                <div class="col-6 offset-3">
+                <div class="col-12">
                     {{ message }}
                 </div>
             </div>
@@ -92,28 +97,42 @@
     {% endfor %}
 {% endif %}
 
+<hr>
 <div class="container">
-
-    <h1 class="m-5">
-        {% block page_heading %}{% endblock %}
-    </h1>
-
-    {% block content %}
-    {% endblock %}
-
-    <footer class="mt-5">
-        <p class="small">by <a href="https://www.micaelasignorelli.com">MiSigno</a>
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
+    <div class="row">
+        <h2>
+            {% block page_heading %}{% endblock %}
+        </h2>
+    </div>
 </div>
+
+{% block content %}
+
+{% endblock %}
+
+
+
+<hr>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-8" align="center">
+            <footer class="mt-5">
+                <p class="small">by <a href="https://www.micaelasignorelli.com">MiSigno</a>
+            </footer>
+        </div>
+    </div>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
 
 </body>
 

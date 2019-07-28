@@ -1,22 +1,31 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
 {% block page_title %}Login Page{% endblock %}
-{% block page_heading %}Login{% endblock %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 mx-auto">
+            {% block page_heading %}<h3 class="main-title">Login</h3>{% endblock %}
+        </div>
+    </div>
+</div>
 
 {% block content %}
     <div class="container" align="center">
         <div class="row">
-            <div class="col-4 offset-4">
+            <div class="col-8 offset-2" align="center">
                 <form name="login" method="POST">
                     {% csrf_token %}
                     {{ login_form | as_bootstrap }}
                     <button class="btn btn-outline-primary btn-sm" type="submit">Login</button>
                 </form>
+
+                <p class="mt-5">
+                    <a href="{% url 'password_reset' %}">Forgot your password?</a>
+                </p>
             </div>
         </div>
     </div>
-    <p class="mt-5">
-        <a href="{% url 'password_reset' %}">Forgot your password?</a>
-    </p>
+
 
 {% endblock %}

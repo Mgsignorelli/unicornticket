@@ -1,36 +1,48 @@
 {% extends 'base.html' %}
 {% load bootstrap_tags %}
 {% block page_title %}Bugs{% endblock %}
-{% block page_heading %}Bugs{% endblock %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 mx-auto">
+            {% block page_heading %}<h3 class="main-title">Bug index</h3>{% endblock %}
+        </div>
+    </div>
+</div>
 
 
 {% block content %}
-    <div class="row">
-        <div class="col-8 offset-2">
-            <table class="table table-">
-                <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Status</th>
-                    <th>Votes</th>
-                    <th class="text-right">Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for bug in bugs %}
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-12">
+                <table class="table">
+                    <thead>
                     <tr>
-                        <td>{{ bug.title }}</td>
-                        <td class="text-capitalize">{{ bug.status }}</td>
-                        <td class="text-right">{{ bug.bugvote_set.count }}</td>
-                        <td class="text-right">
-                            <a class="btn btn-sm btn-outline-primary" href="{% url 'show_bug' bug.id %}">
-                                View
-                            </a>
-                        </td>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>Votes</th>
+                        <th class="text-right">Actions</th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {% for bug in bugs %}
+                        <tr>
+                            <td>{{ bug.title }}</td>
+                            <td class="text-capitalize">{{ bug.status }}</td>
+                            <td class="text-right">{{ bug.bugvote_set.count }}</td>
+                            <td class="text-right">
+                                <a class="btn btn-sm btn-outline-primary" href="{% url 'show_bug' bug.id %}">
+                                    View
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 {% endblock %}
