@@ -3,15 +3,21 @@
 {% load staticfiles %}
 {% block page_title %} Home Page {% endblock %}
 
+{% block head_js %}
+    <script>
+        var chart_data = {{  chart_data|safe }};
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/charts.js' %}"></script>
+{% endblock %}
+
+
 {% block content %}
     <div class="container my-5">
         <div class="row">
             <div class="jumbotron">
-                <h1 class="display-3">There will be <span class="text-info">graphs</span> here</h1>
-                <p class="lead">showing breakdown of features and bugs tended to</p>
-                <hr class="my-4">
-                <p>                <h4> and maybe a list of features and bugs</h4>
-                </p>
+                <canvas id="breakdown-chart"></canvas>
                 <p class="lead" align="right">
                     <a class="btn btn-primary btn-lg" href="{% url 'buyvotes' %}" role="button">Buy votes</a>
                 </p>

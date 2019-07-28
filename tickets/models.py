@@ -32,6 +32,20 @@ class Feature(Ticket):
     pass
 
 
+class TicketWork(models.Model):
+    created = models.DateTimeField(default=timezone.now)
+    class Meta:
+        abstract = True
+
+
+class BugWork(TicketWork):
+    bug = models.ForeignKey(Bug)
+
+
+class FeatureWork(TicketWork):
+    feature = models.ForeignKey(Feature)
+
+
 class Vote(models.Model):
     class Meta:
         abstract = True

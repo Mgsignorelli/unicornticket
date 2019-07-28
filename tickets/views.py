@@ -1,8 +1,32 @@
+import json
+
+from dateutil.relativedelta import relativedelta
+from dateutil.utils import today
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
+from django.utils.timezone import now
+
 from tickets.forms import TicketForm, BugForm, FeatureForm
-from tickets.models import Bug, Feature, BugVote, FeatureVote
+from tickets.helpers import get_aggregate_count
+from tickets.models import Bug, Feature, BugVote, FeatureVote, BugWork, FeatureWork
+from UnicornTicketSystem.helpers import datetime_range, get_model_count_for_date_range
+
+
+def index(request):
+    chart_data = {
+        'bugs': [],
+        'features': [],
+    }
+
+    date = today() + relativedelta(months=-12)
+
+    for i in range(12):
+        date = date + relativedelta(months=+1)
+        chart_data['bugs'].append(get_model_count_for_date_range(BugWork, datetime_range(date, 'month')))
+        chart_data['features'].append(get_model_count_for_date_range(FeatureWork, datetime_range(date, 'month')))
+
+    return render(request, 'index.html', {'chart_data': json.dumps(chart_data)})
 
 
 @login_required()
