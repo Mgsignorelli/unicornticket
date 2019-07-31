@@ -15,16 +15,33 @@ from UnicornTicketSystem.helpers import datetime_range, get_model_count_for_date
 
 def index(request):
     chart_data = {
-        'bugs': [],
-        'features': [],
+        'monthly': {
+            'bugs': [],
+            'features': [],
+        },
+
+        'daily': {
+            'bugs': [],
+            'features': [],
+        },
     }
 
-    date = today() + relativedelta(months=-12)
+    one_year_ago = today() + relativedelta(months=-12)
 
     for i in range(12):
-        date = date + relativedelta(months=+1)
-        chart_data['bugs'].append(get_model_count_for_date_range(BugWork, datetime_range(date, 'month')))
-        chart_data['features'].append(get_model_count_for_date_range(FeatureWork, datetime_range(date, 'month')))
+        one_year_ago = one_year_ago + relativedelta(months=+1)
+        chart_data['monthly']['bugs'].append(
+            get_model_count_for_date_range(BugWork, datetime_range(one_year_ago, 'month')))
+        chart_data['monthly']['features'].append(
+            get_model_count_for_date_range(FeatureWork, datetime_range(one_year_ago, 'month')))
+
+    one_week_ago = today() + relativedelta(weeks=-1)
+
+    for i in range(7):
+        one_week_ago = one_week_ago + relativedelta(days=+1)
+        chart_data['daily']['bugs'].append(get_model_count_for_date_range(BugWork, datetime_range(one_week_ago, 'day')))
+        chart_data['daily']['features'].append(
+            get_model_count_for_date_range(FeatureWork, datetime_range(one_week_ago, 'day')))
 
     return render(request, 'index.html', {'chart_data': json.dumps(chart_data)})
 
