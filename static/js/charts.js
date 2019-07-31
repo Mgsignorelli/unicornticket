@@ -1,32 +1,39 @@
 (function () {
-    document.addEventListener('DOMContentLoaded', function () {
-        var canvas = document.getElementById('breakdown-chart');
+    var drawChart = function (canvasId, intervals, intervalType, datasetLocation) {
+        var canvas = document.getElementById(canvasId);
         var context = canvas.getContext('2d');
-        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
         var chartOptions = {
             type: 'line',
             data: {
-                labels: Array.apply(null, Array(12)).map((v, index) => {
+                labels: Array.apply(null, Array(intervals.length)).map((v, index) => {
                     let date = new Date();
-                    const current_month = date.getMonth();
-                    const month = current_month - (12 - index - 1);
-                    date = date.setMonth(month);
+                    const intervalIndex =  date["get" + intervalType]();
 
-                    return months[(new Date(date)).getMonth()];
+                    let pointer = index + intervalIndex;
+
+                    if (intervalType === 'Month') {
+                        pointer += 1;
+                    }
+
+                    if (pointer >= intervals.length) {
+                        pointer -= intervals.length;
+                    }
+
+                    return intervals[pointer];
                 }),
                 datasets: [{
                     label: 'B',
                     borderColor: '#FF9BCA',
                     backgroundColor: '#FF9BCA',
                     fill: false,
-                    data: chart_data.bugs,
+                    data: chart_data[datasetLocation].bugs,
                 }, {
                     label: 'F',
                     borderColor: '#C8FFDA',
                     backgroundColor: '#C8FFDA',
                     fill: false,
-                    data: chart_data.features,
+                    data: chart_data[datasetLocation].features,
                 }]
             },
             options: {
@@ -48,7 +55,7 @@
                         display: true,
                         scaleLabel: {
                             display: true,
-                            labelString: 'Month'
+                            labelString: intervalType + 's'
                         }
                     }],
                     yAxes: [{
@@ -63,5 +70,21 @@
         };
 
         new Chart(context, chartOptions);
+    };
+
+    document.addEventListener('DOMContentLoaded', function () {
+        drawChart(
+            'monthly-chart',
+            ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            'Month',
+            'monthly',
+        );
+
+        drawChart(
+            'daily-chart',
+            ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            'Day',
+            'daily',
+        );
     });
 })();
