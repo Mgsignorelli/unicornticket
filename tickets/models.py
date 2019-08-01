@@ -20,6 +20,8 @@ class Ticket(models.Model):
     creator = models.ForeignKey(User)
     created = models.DateTimeField(default=timezone.now)
 
+    # comments = models.CharField(max_length=250)
+
     class Meta:
         abstract = True
 
@@ -34,6 +36,7 @@ class Feature(Ticket):
 
 class TicketWork(models.Model):
     created = models.DateTimeField(default=timezone.now)
+
     class Meta:
         abstract = True
 
@@ -60,3 +63,20 @@ class FeatureVote(Vote):
     feature = models.ForeignKey(Feature, blank=True, null=True)
     voter = models.ForeignKey(User)
     order = models.ForeignKey(Order, blank=True, null=True)
+
+
+class Comment(models.Model):
+    commenter = models.ForeignKey(User)
+    content = models.TextField(max_length=1500)
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        abstract = True
+
+
+class BugComment(Comment):
+    bug = models.ForeignKey(Bug)
+
+
+class FeatureComment(Comment):
+    feature = models.ForeignKey(Feature)

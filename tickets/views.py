@@ -5,11 +5,12 @@ from dateutil.utils import today
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse, resolve
 from django.utils.timezone import now
 
-from tickets.forms import TicketForm, BugForm, FeatureForm
+from tickets.forms import TicketForm, BugForm, FeatureForm, CommentForm
 from tickets.helpers import get_aggregate_count
-from tickets.models import Bug, Feature, BugVote, FeatureVote, BugWork, FeatureWork
+from tickets.models import Bug, Feature, BugVote, FeatureVote, BugWork, FeatureWork, BugComment, FeatureComment
 from UnicornTicketSystem.helpers import datetime_range, get_model_count_for_date_range
 
 
@@ -89,7 +90,8 @@ def show_bug(request, id):
 
     form = BugForm(instance=bug)
     has_voted = True if user.is_authenticated and bug.bugvote_set.filter(voter_id__exact=user.id).count() > 0 else False
-    return render(request, 'bug_show.html', {'bug': bug, 'form': form, 'user_has_voted': has_voted})
+    return render(request, 'bug_show.html',
+                  {'bug': bug, 'form': form, 'comment_form': CommentForm(), 'user_has_voted': has_voted})
 
 
 @login_required()
@@ -141,7 +143,8 @@ def show_feature(request, id):
     has_voted = True if user.is_authenticated and feature.featurevote_set.filter(
         voter_id__exact=user.id).count() > 0 else False
     return render(request, 'feature_show.html',
-                  {'feature': feature, 'form': form, 'user_has_voted': has_voted, 'user_has_votes': has_votes})
+                  {'feature': feature, 'form': form, 'comment_form': CommentForm(), 'user_has_voted': has_voted,
+                   'user_has_votes': has_votes})
 
 
 @login_required()
@@ -166,6 +169,33 @@ def vote_feature(request, id):
         messages.error(request, "You have to post")
 
     return redirect('show_feature', id=feature.id)
+
+
+@login_required()
+def add_comment(request, id):
+    url_name = resolve(request.path_info).url_name
+
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+
+        if form.is_valid():
+            if url_name == 'comment_bug':
+                comment = BugComment()
+                comment.bug_id = id
+            elif url_name == 'comment_feature':
+                comment = FeatureComment()
+                comment.feature_id = id
+
+            comment.commenter = auth.get_user(request)
+            comment.content = form.cleaned_data['content']
+            comment.save()
+
+            messages.success(request, "Thank you for your comment!")
+
+        else:
+            messages.error(request, "There was a problem... please try again!")
+
+    return redirect(reverse(url_name.replace('comment', 'show'), args=(id)))
 
 
 def index_bug(request):
