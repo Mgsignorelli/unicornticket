@@ -21,7 +21,8 @@
                     <tr>
                         <th>Title</th>
                         <th>Status</th>
-                        <th class="text-right">Actions</th>
+                        <th>Votes</th>
+                        <th class="text-center">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -29,7 +30,8 @@
                         <tr>
                             <td>{{ feature.title }}</td>
                             <td class="text-capitalize">{{ feature.status }}</td>
-                            <td class="text-right">
+                            <td class="text-center">{{ feature.featurevote_set.count }}</td>
+                            <td class="text-center">
                                 <a class="btn btn-sm btn-outline-primary" href="{% url 'show_feature' feature.id %}">
                                     View
                                 </a>
