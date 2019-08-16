@@ -2,6 +2,7 @@ import json
 
 from dateutil.relativedelta import relativedelta
 from dateutil.utils import today
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
@@ -199,10 +200,17 @@ def add_comment(request, id):
 
 
 def index_bug(request):
-    bugs = Bug.objects.all()
-    return render(request, 'bug_index.html', {'bugs': bugs})
+    bugs_list = Bug.objects.all()
+    paginator = Paginator(bugs_list, 5)
+    page = request.GET.get('page')
+    page = page if page is not None else '1'
+
+    return render(request, 'bug_index.html', {'bugs': paginator.page(page)})
 
 
 def index_feature(request):
-    features = Feature.objects.all()
-    return render(request, 'feature_index.html', {'features': features})
+    features_list = Feature.objects.all()
+    paginator = Paginator(features_list, 5)
+    page = request.GET.get('page')
+    page = page if page is not None else '1'
+    return render(request, 'feature_index.html', {'features': paginator.page(page)})
