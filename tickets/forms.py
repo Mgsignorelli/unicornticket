@@ -1,6 +1,6 @@
 from django import forms
 
-from tickets.models import Bug, Feature
+from tickets.models import Bug, Feature, Comment
 
 
 class TicketForm(forms.Form):
@@ -38,3 +38,6 @@ class FeatureForm(forms.ModelForm):
         model = Feature
         fields = ['title', 'description', 'status']
 
+
+class CommentForm(forms.Form):
+    content = forms.CharField(label="Comment", widget=forms.Textarea)

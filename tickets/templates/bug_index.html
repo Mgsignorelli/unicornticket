@@ -16,15 +16,14 @@
     <div class="container">
 
         <div class="row">
-
-            <div class="col-12">
+            <div class="col-sm-8 offset-2">
                 <table class="table">
                     <thead>
                     <tr>
                         <th>Title</th>
                         <th>Status</th>
                         <th>Votes</th>
-                        <th class="text-right">Actions</th>
+                        <th class="text-center">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -32,8 +31,8 @@
                         <tr>
                             <td>{{ bug.title }}</td>
                             <td class="text-capitalize">{{ bug.status }}</td>
-                            <td class="text-right">{{ bug.bugvote_set.count }}</td>
-                            <td class="text-right">
+                            <td class="text-center">{{ bug.bugvote_set.count }}</td>
+                            <td class="text-center">
                                 <a class="btn btn-sm btn-outline-primary" href="{% url 'show_bug' bug.id %}">
                                     View
                                 </a>
