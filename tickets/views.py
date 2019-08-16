@@ -209,5 +209,8 @@ def index_bug(request):
 
 
 def index_feature(request):
-    features = Feature.objects.all()
-    return render(request, 'feature_index.html', {'features': features})
+    features_list = Feature.objects.all()
+    paginator = Paginator(features_list, 5)
+    page = request.GET.get('page')
+    page = page if page is not None else '1'
+    return render(request, 'feature_index.html', {'features': paginator.page(page)})
