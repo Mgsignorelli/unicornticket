@@ -1,10 +1,3 @@
-/*............................General*/
-/*html,*/
-/*body {*/
-/*    height: 95%;*/
-/*    width: 95%;*/
-/*}*/
-
 /*............................Main title */
 
 .main-title {
@@ -78,6 +71,13 @@
 }
 
 /*............................Table */
+
+.table-index {
+    padding: 1rem;
+    line-height: 45px;
+    color: #B50457;
+}
+
 .table-feature {
     background-color: #ffffff;
     color: #000000;
@@ -90,12 +90,51 @@
     font-weight: 800;
 }
 
+/*..........................Pagination */
+
+.pagination {
+    padding-top: 45px;
+}
+
+/*.............Vote slider */
+.slidecontainer {
+    width: 50%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 25px;
+    border-radius: 5px;
+    background: #FFDCEC;
+    outline: none;
+    opacity: 0.6;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #B50457;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #B50457;
+    cursor: pointer;
+}
+
 /*.............Smaller screen settings */
 
 
 @media only screen and (max-width: 800px) {
-    /*body {*/
-    /*    height: 100%;*/
-    /*    width: 100%;*/
-    /*}*/
+
 }
