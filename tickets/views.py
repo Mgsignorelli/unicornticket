@@ -3,6 +3,7 @@ import json
 from dateutil.relativedelta import relativedelta
 from dateutil.utils import today
 from django.core.paginator import Paginator
+from django.db.models import Count
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
@@ -45,7 +46,11 @@ def index(request):
         chart_data['daily']['features'].append(
             get_model_count_for_date_range(FeatureWork, datetime_range(one_week_ago, 'day')))
 
-    return render(request, 'index.html', {'chart_data': json.dumps(chart_data)})
+    mostvoted = {
+        'bug': Bug.objects.annotate(votecount=Count('bugvote')).order_by('-votecount')[:1][0],
+        'feature': Feature.objects.annotate(votecount=Count('featurevote')).order_by('-votecount')[:1][0],
+    }
+    return render(request, 'index.html', {'chart_data': json.dumps(chart_data), 'mostvoted': mostvoted})
 
 
 @login_required()
@@ -164,7 +169,6 @@ def vote_feature(request, id):
             messages.success(request, "Thank you for your vote")
         else:
             messages.error(request, "You must buy votes")
-    #         @todo redirect to store page
 
     else:
         messages.error(request, "You have to post")
