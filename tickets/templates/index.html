@@ -38,8 +38,7 @@
     <hr>
     <div class="container">
         <div class="row">
-            <div class="col-sm-8 offset-2 mt-5" align="center">
-
+            <div class="col-sm-12 mt-5" align="center">
                 <a class="btn btn-primary btn-sm btn-create-ticket"
                    href="{% url 'create_ticket' %}"
                    role="button">Create a Ticket!
@@ -47,8 +46,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-8 offset-2 mt-4 mb-5" align="center">
-
+            <div class="col-sm-12 mt-4 mb-5" align="center">
                 <a class="btn btn-primary btn-sm btn-buy-votes"
                    href="{% url 'buyvotes' %}"
                    role="button">Buy feature votes
@@ -59,28 +57,16 @@
     <hr>
     <div class="container">
         <div class="row">
-            <div class="col-sm-8 offset-2 mt-5 mb-4">
+            <div class="col-sm-12 mt-5 mb-4">
                 <table class="table table-hover">
-                    {#                    <thead>#}
-                    {#                    <tr>#}
-                    {#                        <th scope="col">Maybe</th>#}
-                    {#                        <th scope="col">Like</th>#}
-                    {#                        <th scope="col">This</th>#}
-                    {#                        <th scope="col">MOST VOTES</th>#}
-                    {#                    </tr>#}
-                    {#                    </thead>#}
                     <tbody>
-                    <tr class="table-active table-feature">
+                    <tr class="table-active table-feature" align="center">
                         <th scope="row"><p>#1 feature</p></th>
                         <td><p>4 hours this week</p></td>
-                        {#                        <td>Column content</td>#}
-                        {#                        <td>INVEST!</td>#}
                     </tr>
-                    <tr class="table-active table-bug">
+                    <tr class="table-active table-bug" align="center">
                         <th scope="row">#1 bug</th>
                         <td>Column content</td>
-                        {#                        <td>Column content</td>#}
-                        {#                        <td>Column content</td>#}
                     </tr>
                     </tbody>
                 </table>
