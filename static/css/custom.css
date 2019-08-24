@@ -8,45 +8,7 @@
     -webkit-background-clip: text;
 }
 
-/*............................Landing page */
-.btn-create-ticket {
-    background-color: #B50457;
-    font-weight: 800;
-    margin: auto;
-    color: white;
-}
-
-.btn-buy-1-vote {
-    background-color: #FF9BCA;
-    font-weight: 800;
-    margin: auto;
-    color: white;
-}
-
-.btn-buy-5-votes {
-    background-color: #FF9BCA;
-    font-weight: 800;
-    margin: auto;
-    color: white;
-}
-
-.btn-buy-10-votes {
-    background-color: #FF0279;
-    font-weight: 800;
-    margin: auto;
-    color: white;
-}
-
-.btn-buy-custom-votes {
-    background-color: #B50457;
-    font-weight: 800;
-    margin: auto;
-    color: white;
-}
-
-/*.text-buy-votes {*/
-
-/*}*/
+/*............................Custom text */
 
 .text-create-ticket {
     background: linear-gradient(to right, #B50457, #FF0279, #ED4E99, #FF9BCA, #FF9BCA);
@@ -55,7 +17,22 @@
     -webkit-background-clip: text;
 }
 
+.text-pink {
+    color: #FF0279;
+}
+
+.text-lightpink {
+    color: #FF9BCA !important;
+    text-shadow: 2px 2px #000000;
+}
+
+.text-lightgreen {
+    color: #C8FFDA !important;
+    text-shadow: 2px 2px #000000;
+}
+
 /*............................Navbar */
+
 .main-title-nav {
     background: linear-gradient(to left, #B50457, #FF0279, #ED4E99, #FF9BCA, #FF9BCA);
     margin: 10px;
@@ -70,24 +47,95 @@
     transition: all 0.35s;
 }
 
+
+/*............................Buttons */
+.btn-buy-votes {
+    background-color: #C8FFDA;
+    font-weight: 800;
+    margin: auto;
+    color: #000000;
+    border-width: 1px;
+    border-color: #000000;
+    outline: 1px solid black;
+}
+
+.btn-create-ticket {
+    background-color: #FF9BCA;
+    font-weight: 800;
+    margin: auto;
+    color: #000000;
+    border-width: 1px;
+    border-color: #000000;
+    outline: 1px solid black;
+}
+
+.btn-buy-1-vote {
+    background-color: #FF9BCA;
+    font-weight: 800;
+    margin: auto;
+    color: #000000;
+    outline: 1px solid black;
+}
+
+.btn-buy-5-votes {
+    background-color: #FF9BCA;
+    font-weight: 800;
+    margin: auto;
+    color: #000000;
+    outline: 1px solid black;
+}
+
+.btn-buy-10-votes {
+    background-color: #FF0279;
+    font-weight: 800;
+    margin: auto;
+    color: #000000;
+}
+
+.btn-buy-custom-votes {
+    background-color: #C8FFDA;
+    font-weight: 800;
+    margin: auto;
+    color: #000000;
+    outline: 1px solid black;
+
+}
+
 /*............................Table */
 
 .table-index {
     padding: 1rem;
     line-height: 45px;
-    color: #B50457;
 }
 
 .table-feature {
-    background-color: #ffffff;
+    background-color: #C8FFDA;
     color: #000000;
-    font-weight: bolder;
+    outline: 1px solid black;
 }
 
 .table-bug {
     background-color: #FF9BCA;
+    color: #000000;
+    outline: 1px solid black;
+
+}
+
+/*..........................Card Ticket Show */
+.card-ticket-show {
+    background: linear-gradient(to right, #B50457, #FF0279, #ED4E99, #FF9BCA, #FF9BCA);
     color: white;
-    font-weight: 800;
+}
+
+/*..........................Alert */
+.alert-pink {
+    background: linear-gradient(to left, #B50457, #FF0279, #ED4E99, #FF9BCA, #FF9BCA);
+    color: black;
+    border: black;
+}
+
+.alert-pink-link {
+    color: #FFDCEC;
 }
 
 /*..........................Pagination */
@@ -97,6 +145,7 @@
 }
 
 /*.............Vote slider */
+
 .slidecontainer {
     width: 50%;
 }
@@ -133,12 +182,14 @@
 }
 
 /*.......................Footer */
+
 .footer {
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
+
 
 /*.............Smaller screen settings */
 

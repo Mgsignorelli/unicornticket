@@ -15,6 +15,7 @@
     <div class="container">
         <div class="row">
             {% if user_is_staff %}
+                <div class="col-sm-12" align="center">
                     <form name="feature_edit" method="post">
                         {% csrf_token %}
                         {{ form | as_bootstrap }}
@@ -30,40 +31,40 @@
                     </div>
                 </div>
             {% endif %}
+
         </div>
         <div class="row">
-            <div class="col-sm-10" align="center">
-                {% if user_has_votes %}
+            {% if user_has_votes %}
+                <div class="col-sm-12" align="center">
                     <form name="feature_vote" method="post" action="{% url 'vote_feature' feature.id %}">
                         {% csrf_token %}
-                        <button type="submit" id="upvote"><h5>Upvote</h5></button>
+                        <button type="submit" id="upvote"><i class="fas fa-thumbs-up text-pink"></i></button>
                     </form>
-                {% endif %}
+                </div>
+            {% endif %}
 
-                <p class="lead my-5">{{ feature.featurevote_set.count }} Votes</p>
+            <div class="col-sm-12" align="center">
+                <h6 class="text-lightpink my-3">{{ feature.featurevote_set.count }}
+                    Votes</h6>
             </div>
-
-            <div class="col-sm-10" align="center">
-
-                {% if not user_has_votes %}
-
-                    <div class="alert alert-dismissible alert-danger">
+            {% if not user_has_votes %}
+                <div class="col-sm-12 my-3" align="center">
+                    <div class="alert alert-dismissible alert-pink">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Oh no!</strong> <a href="{% url 'buyvotes' %}" class="alert-link">buy feature
-                        votes</a>
-                        and try
-                        submitting again.
+                        <strong>Oh no!</strong> <a href="{% url 'buyvotes' %}" class="alert-pink-link">buy feature
+                        votes</a> to vote on a feature
                     </div>
-
-                {% endif %}
-
-            </div>
+                </div>
+            {% endif %}
         </div>
 
         <div class="row">
+            <div class="col-sm-12 my-3" align="right">
+                <h5> Comments</h5>
+            </div>
             {% for comment in feature.featurecomment_set.all %}
                 {% if comment.feature_id == feature.id %}
-                    <div class="col-sm-10 mb-5" align="right">
+                    <div class="col-sm-12 mb-5" align="right">
                         <div class="card">
                             <div class="card-body">
                                 <p class="lead"><strong>{{ comment.commenter }}</strong></p>
@@ -78,7 +79,7 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-10 mt-3" align="center">
+            <div class="col-sm-12 mt-3" align="center">
                 <form name="comment_feature" action="{% url 'comment_feature' feature.id %}" method="POST">
                     {{ comment_form.non_field_errors }}
                     {{ comment_form | as_bootstrap }}

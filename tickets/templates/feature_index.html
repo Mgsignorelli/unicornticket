@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-8 mx-auto">
-            {% block page_heading %}<h3 class="main-title">Features</h3>{% endblock %}
+            {% block page_heading %}<h3 class="text-lightgreen">Features</h3>{% endblock %}
         </div>
     </div>
 </div>
@@ -32,7 +32,7 @@
                             <td class="text-capitalize">{{ feature.status }}</td>
                             <td class="text-center">{{ feature.featurevote_set.count }}</td>
                             <td class="text-center">
-                                <a class="btn btn-sm btn-outline-primary" href="{% url 'show_feature' feature.id %}">
+                                <a class="btn btn-sm btn-buy-votes" href="{% url 'show_feature' feature.id %}">
                                     View
                                 </a>
                             </td>
