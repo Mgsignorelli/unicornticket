@@ -8,7 +8,7 @@
             data: {
                 labels: Array.apply(null, Array(intervals.length)).map((v, index) => {
                     let date = new Date();
-                    const intervalIndex =  date["get" + intervalType]();
+                    const intervalIndex = date["get" + intervalType]();
 
                     let pointer = index + intervalIndex;
 
@@ -23,14 +23,14 @@
                     return intervals[pointer];
                 }),
                 datasets: [{
-                    label: 'B',
-                    borderColor: '#FF9BCA',
+                    label: 'Bugs',
+                    borderColor: '#000000',
                     backgroundColor: '#FF9BCA',
                     fill: false,
                     data: chart_data[datasetLocation].bugs,
                 }, {
-                    label: 'F',
-                    borderColor: '#C8FFDA',
+                    label: 'Features',
+                    borderColor: '#000000',
                     backgroundColor: '#C8FFDA',
                     fill: false,
                     data: chart_data[datasetLocation].features,
@@ -40,7 +40,7 @@
                 responsive: true,
                 title: {
                     display: true,
-                    text: 'Breakdown of Bug and Feature Work'
+                    // text: 'Breakdown of Bug and Feature Work'
                 },
                 tooltips: {
                     mode: 'index',
