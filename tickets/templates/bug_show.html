@@ -14,13 +14,24 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-sm-10" align="center">
-                <form name="bug_edit" method="post">
-                    {% csrf_token %}
-                    {{ form | as_bootstrap }}
-                    <button class="btn btn-create-ticket btn-sm mb-5" type="submit">Save Changes</button>
-                </form>
-            </div>
+            {% if user_is_staff %}
+                    <form name="bug_edit" method="post">
+                        {% csrf_token %}
+                        {{ form | as_bootstrap }}
+                        <button class="btn btn-create-ticket btn-sm mb-5" type="submit">Save Changes</button>
+                    </form>
+                </div>
+            {% else %}
+
+                <div class="col-12 my-3" align="center">
+                    <div class="card card-ticket-show">
+                        <p><h6>Description:</h6><h4>{{ bug.description }}</h4></p>
+                        <p><h6>Status:</h6><h4>{{ bug.status }}</h4></p>
+                    </div>
+                </div>
+
+
+            {% endif %}
         </div>
         <div class="row">
             <div class="col-sm-10" align="center">
