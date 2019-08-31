@@ -17,9 +17,11 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from tickets.views import index
+from sales.views import app_home
 from accounts import urls as accounts_urls
 from tickets import urls as tickets_urls
 from voteshop import urls as voteshop_urls
+from sales import urls as sales_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,5 +29,6 @@ urlpatterns = [
     url(r'^accounts/', include(accounts_urls)),
     url(r'^tickets/', include(tickets_urls)),
     url(r'^voteshop/', include(voteshop_urls)),
+    url(r'^sales/', include(sales_urls))
 
 ]

@@ -1,0 +1,75 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Unicorn Attractor - Ticket System">
+    <meta name="author" content="MGSignorelli">
+
+    <title>{% block page_title %}{% endblock %} Unicorn Ticket System</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+
+    <!-- Bootstrap Theme Bootswatch -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+    {% block head_js %}
+    {% endblock head_js %}
+</head>
+{% load bootstrap_tags %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mx-auto">
+
+    <a class="main-title-nav navbar-brand" href="{% url 'app_home' %}">Unicorn Attractor</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+            aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="main-title-nav navbar-brand" href="{% url 'index' %}">UA | Helpdesk</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 mx-auto my-5" align="center">
+            {% block page_heading %}<h2 class="display-4 main-title">Unicorn Attractor</h2>{% endblock %}
+        </div>
+    </div>
+</div>
+
+
+{% block content %}
+    <div class="container" align="center">
+        <div class="row">
+            <div class="col-12">
+                <img src="/static/img/unicorn.png" class="img-fluid mb-5"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 my-5">
+                <h3 class="main-title">My app brings all the unicorns to the yard</h3>
+                <h5 class="my-3">unleash the power of our super secret unicorn frequency</h5>
+                <h6></h6>
+            </div>
+            <div class="col-12">
+                <h4 class="text-lightgreen">Download</h4><h4 class="text-pink"><a href="https://www.raicestexas.org/donate/">HERE</a></h4>
+            </div>
+        </div>
+    </div>
+{% endblock %}

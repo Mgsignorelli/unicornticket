@@ -47,10 +47,10 @@
         <ul class="navbar-nav mr-auto">
 
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'index_bug' %}">Bugs</a>
+                <a class="nav-link text-lightpink" href="{% url 'index_bug' %}">Bugs</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'index_feature' %}">Features</a>
+                <a class="nav-link text-lightgreen" href="{% url 'index_feature' %}">Features</a>
             </li>
             {% if user.is_authenticated %}
                 <li class="nav-item">
@@ -76,11 +76,16 @@
                 </li>
 
             {% endif %}
+            </ul>
+        <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link text-create-ticket" href="{% url 'buyvotes' %}">Buy votes</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link text-lightgreen" href="{% url 'app_home' %}">App</a>
+            </li>
 
-            </ul>
+        </ul>
     </div>
 </nav>
 

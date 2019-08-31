@@ -21,6 +21,18 @@
     color: #FF0279;
 }
 
+body > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) > h4.text-pink > a {
+    color: #C8FFDA;
+    text-shadow: 2px 2px #000000;
+}
+
+body > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) > h4.text-pink > a:hover {
+    color: #FF0279;
+    text-decoration: none;
+    text-shadow: none;
+    cursor: pointer;
+}
+
 .text-lightpink {
     color: #FF9BCA !important;
     text-shadow: 2px 2px #000000;
