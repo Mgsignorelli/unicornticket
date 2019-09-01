@@ -151,9 +151,10 @@ def show_feature(request, id):
 
     has_voted = True if user.is_authenticated and feature.featurevote_set.filter(
         voter_id__exact=user.id).count() > 0 else False
+    is_staff = True if user.is_staff else False
     return render(request, 'feature_show.html',
                   {'feature': feature, 'form': form, 'comment_form': CommentForm(), 'user_has_voted': has_voted,
-                   'user_has_votes': has_votes})
+                   'user_has_votes': has_votes, 'user_is_staff': is_staff})
 
 
 @login_required()
