@@ -208,7 +208,7 @@ def add_comment(request, id):
 
 
 def index_bug(request):
-    bugs_list = Bug.objects.all()
+    bugs_list = Bug.objects.annotate(votecount=Count('bugvote')).order_by('-votecount').all()
     paginator = Paginator(bugs_list, 5)
     page = request.GET.get('page')
     page = page if page is not None else '1'
