@@ -217,7 +217,7 @@ def index_bug(request):
 
 
 def index_feature(request):
-    features_list = Feature.objects.all()
+    features_list = Feature.objects.annotate(votecount=Count('featurevote')).order_by('-votecount')
     paginator = Paginator(features_list, 5)
     page = request.GET.get('page')
     page = page if page is not None else '1'
