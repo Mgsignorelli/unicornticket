@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
+from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from accounts.forms import UserLoginForm, UserRegistrationForm
+from voteshop.helpers import calculate_cost
 
 
 @login_required
@@ -62,5 +64,10 @@ def registration(request):
 
 def user_profile(request):
     """Returns user profile"""
-    user = User.objects.get(email=request.user.email)
-    return render(request, 'profile.html', {"profile": user})
+    user = request.user
+    orders_list = user.order_set.order_by('-created').all()
+    paginator = Paginator(orders_list, 5)
+    page = request.GET.get('page')
+    page = page if page is not None else '1'
+
+    return render(request, 'profile.html', {"user": user, "orders": paginator.page(page)})

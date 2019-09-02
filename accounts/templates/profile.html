@@ -12,9 +12,38 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-sm-8 mt-5" align="center">
-                <p>{{ profile.email }}</p>
-
+            <div class="col-sm-12 my-3" align="center">
+                <h5>Email address: </h5>
+                <p>{{ user.email }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 my-3" align="left">
+                <h5>Order history: </h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 my-3" align="center">
+                <div class="table-responsive table-index">
+                    <table class="col-sm-12">
+                        <thead>
+                        <tr>
+                            <th><h5>Date bought</h5></th>
+                            <th><h5 class="text-center">Votes bought</h5></th>
+                            <th><h5 class="text-center">Order cost</h5></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for order in user.order_set.all reversed %}
+                            <tr>
+                                <td>{{ order.created }}</td>
+                                <td class="text-center">{{ order.total }}</td>
+                                <td class="text-center">{{ order.cost }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

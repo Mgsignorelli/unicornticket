@@ -2,23 +2,12 @@ import stripe
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.utils.timezone import now
-
 from UnicornTicketSystem import settings
+from UnicornTicketSystem.helpers import calculate_cost
 from tickets.models import FeatureVote
 from voteshop.models import Order
 
 stripe.api_key = settings.STRIPE_SECRET
-
-
-def calculate_cost(votes):
-    if votes >= 5:
-        return float2((votes * 0.7) * 100)
-
-    return float2(votes * 100)
-
-
-def float2(number):
-    return int(round(number, 2))
 
 
 def get_order(order_id, user):
