@@ -30,7 +30,7 @@
                         <tr>
                             <td>{{ feature.title }}</td>
                             <td class="text-capitalize">{{ feature.status }}</td>
-                            <td class="text-center">{{ feature.featurevote_set.count }}</td>
+                            <td>{{ feature.featurevote_set.count }}</td>
                             <td class="text-center">
                                 <a class="btn btn-sm btn-buy-votes" href="{% url 'show_feature' feature.id %}">
                                     View
