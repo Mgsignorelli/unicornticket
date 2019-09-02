@@ -1,6 +1,9 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from UnicornTicketSystem.helpers import calculate_cost
+
+
 class Order(models.Model):
     paid = models.DateTimeField(null=True, default=None)
     buyer = models.ForeignKey(User)
