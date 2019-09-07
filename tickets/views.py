@@ -46,9 +46,11 @@ def index(request):
         chart_data['daily']['features'].append(
             get_model_count_for_date_range(FeatureWork, datetime_range(one_week_ago, 'day')))
 
+    bugs = Bug.objects.annotate(votecount=Count('bugvote')).order_by('-votecount')
+    features = Feature.objects.annotate(votecount=Count('featurevote')).order_by('-votecount')
     mostvoted = {
-        'bug': Bug.objects.annotate(votecount=Count('bugvote')).order_by('-votecount')[:1][0],
-        'feature': Feature.objects.annotate(votecount=Count('featurevote')).order_by('-votecount')[:1][0],
+        'bug': bugs[:1][0] if bugs.count() > 0 else [],
+        'feature': features[:1][0] if features.count() > 0 else [],
     }
     return render(request, 'index.html', {'chart_data': json.dumps(chart_data), 'mostvoted': mostvoted})
 
