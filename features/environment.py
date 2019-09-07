@@ -9,6 +9,8 @@ from selenium import webdriver
 def web_browser(context):
     options = webdriver.ChromeOptions()
     options.add_argument('window-size=1920,1080')
+
+    executable_path = {}
     # give a path for chrome if not running on CI
     if os.environ.get('CI') != 'true':
         executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
