@@ -201,11 +201,3 @@ body > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) > h4.text-pink > a
     width: 100%;
     text-align: center;
 }
-
-
-/*.............Smaller screen settings */
-
-
-@media only screen and (max-width: 800px) {
-
-}
