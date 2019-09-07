@@ -4,12 +4,16 @@ from behave.model_core import Status
 from splinter import Browser
 from selenium import webdriver
 
+
 @fixture
 def web_browser(context):
     options = webdriver.ChromeOptions()
     options.add_argument('window-size=1920,1080')
+    # give a path for chrome if not running on CI
+    if os.environ.get('CI') != 'true':
+        executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
 
-    context.browser = Browser('chrome', headless=True, incognito=True, options=options)
+    context.browser = Browser('chrome', headless=True, incognito=True, options=options, **executable_path)
 
     yield context.browser
     context.browser.quit()
