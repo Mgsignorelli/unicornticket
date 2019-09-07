@@ -1,6 +1,16 @@
 language: python
+addons:
+  chrome: stable
 python:
   - "3.4"
+before_install:
+  - curl -sL "http://chromedriver.storage.googleapis.com/`curl -sL http://chromedriver.storage.googleapis.com/LATEST_RELEASE`/chromedriver_linux64.zip" -o chromedriver.zip
+  - unzip chromedriver.zip; rm chromedriver.zip; sudo mv chromedriver /usr/bin/chromedriver; sudo chmod +x /usr/bin/chromedriver
+  - cp .env.example .env
 install: "pip install -r requirements.txt"
 script:
   - ./manage.py behave
+after_failure:
+  - sudo pip install awscli
+  - export AWS_ACCESS_KEY_ID=$ARTIFACTS_KEY; export AWS_SECRET_ACCESS_KEY=$ARTIFACTS_SECRET
+  - aws s3 cp --recursive --exclude ".gitkeep" $TRAVIS_BUILD_DIR/features/screenshots s3://$ARTIFACTS_BUCKET/$TRAVIS_BUILD_NUMBER/

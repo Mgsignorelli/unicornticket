@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load bootstrap_tags %}
+{% block page_title %} Registration Page {% endblock %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 mx-auto">
+            {% block page_heading %}<h3 class="main-title">User Registration</h3>{% endblock %}
+        </div>
+    </div>
+</div>
+{% block content %}
+
+    <div class="container" align="center">
+        <div class="row">
+            <div class="col-8 offset-2" align="center">
+                <p class="my-5">If you already have an account, you can <a href="{% url 'login' %}">sign in </a>
+                </p>
+
+                <form name="registration" method="POST">
+                    {% csrf_token %} {{ registration_form | as_bootstrap }}
+                    <button class="btn btn-outline-primary btn-sm" type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

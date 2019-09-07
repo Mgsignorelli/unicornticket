@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load bootstrap_tags %}
+{% load staticfiles %}
+
+{% block page_title %}Unicorn Attractor Helpdesk{% endblock %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 mx-auto">
+            {% block page_heading %}<h3 class="main-title">Unicorn Attractor Helpdesk</h3>{% endblock %}
+        </div>
+    </div>
+</div>
+<hr>
+{% block head_js %}
+    <script>
+        var chart_data = {{  chart_data|safe }};
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/charts.js' %}"></script>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 mt-5 mb-3" align="center">
+                <table class="table">
+                    <tbody>
+                    <tr class="table table-feature" align="center">
+                        <th scope="row">#1 feature</th>
+                        <td><a>{{ mostvoted.feature.title }}</a>
+                        </td>
+                    </tr>
+                    <tr class="table table-bug" align="center">
+                        <th scope="row">#1 bug</th>
+                        <td><a>{{ mostvoted.bug.title }}</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 mt-3" align="center">
+                <a class="btn btn-primary btn-sm btn-create-ticket"
+                   href="{% url 'create_ticket' %}"
+                   role="button">Create a Ticket
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 mt-4 mb-5" align="center">
+                <a class="btn btn-primary btn-sm btn-buy-votes"
+                   href="{% url 'buyvotes' %}"
+                   role="button">Buy feature votes
+                </a>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 mt-3">
+                <h4>Ticket work breakdown</h4>
+            </div>
+            <div class="col-sm-12 mt-3">
+                <canvas id="monthly-chart"></canvas>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 mt-5">
+                <canvas id="daily-chart"></canvas>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

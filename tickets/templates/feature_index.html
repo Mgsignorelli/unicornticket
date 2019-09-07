@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load bootstrap_tags %}
+{% block page_title %}Features{% endblock %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 mx-auto">
+            {% block page_heading %}<h3 class="text-lightgreen">Features</h3>{% endblock %}
+        </div>
+    </div>
+</div>
+
+
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="table-responsive table-index">
+                <table class="col-sm-12">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>Votes</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for feature in features %}
+                        <tr>
+                            <td>{{ feature.title }}</td>
+                            <td class="text-capitalize">{{ feature.status }}</td>
+                            <td>{{ feature.featurevote_set.count }}</td>
+                            <td class="text-center">
+                                <a class="btn btn-sm btn-buy-votes" href="{% url 'show_feature' feature.id %}">
+                                    View
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+
+
+                    <tfoot>
+                    <tr>
+                        <td colspan="4">
+                            <nav aria-label="Page navigation example" class="mx-auto">
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a
+                                                class="page-link {% if not features.has_previous %}disabled{% endif %}"
+                                                {% if features.has_previous %}
+                                                href="?page={{ features.previous_page_number }}"
+                                                {% endif %}
+                                        >Previous</a>
+                                    </li>
+                                    {% with ''|center:features.paginator.num_pages as range %}
+                                        {% for _ in range %}
+                                            <li class="page-item"><a class="page-link"
+                                                                     href="?page={{ forloop.counter }}">{{ forloop.counter }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    {% endwith %}
+                                    <a
+                                            class="page-link {% if not features.has_next %}disabled{% endif %}"
+                                            {% if features.has_next %}
+                                            href="?page={{ features.next_page_number }}"
+                                            {% endif %}
+                                    >Next</a>
+
+                                </ul>
+                            </nav>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

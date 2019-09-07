@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% load bootstrap_tags %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 mx-auto">
+            {% block page_heading %}<h3 class="text-create-ticket">BUY VOTES</h3>{% endblock %}
+        </div>
+    </div>
+</div>
+
+{% block head_js %}
+    <script src="https://js.stripe.com/v3/"></script>
+    <script type="text/javascript">
+        //<![CDATA[
+        Stripe.publishableKey = '{{ publishable }}';
+        //]]>
+    </script>
+    <script type="text/javascript" src="{% static 'js/checkout.js' %}"></script>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row row-flex">
+            <div class="col-sm-12 mt-5" align="center">
+                <button type="button" class="btn btn-buy-1-vote purchase_button" data-count="1">BUY 1 VOTE -  £1
+                </button>
+            </div>
+            <div class="col-sm-12 mt-2" align="center">
+                <button type="button" class="btn btn-buy-5-votes purchase_button" data-count="5">BUY 5 VOTES - £4
+                </button>
+            </div>
+            <div class="col-sm-12 mt-2" align="center">
+                <button type="button" class="btn btn-buy-1-vote purchase_button" data-count="10">BUY 10 VOTES £7
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 mt-2" align="center">
+                <form class="hidden" action="{% url 'buyvotes' %}" method="post" id="checkout">
+                    {% csrf_token %}
+                    <div class="slidecontainer">
+                        <label for="range" class="mt-3">or enter custom amount:</label>
+                        <input type="range" min="1" max="100" value="1" name="votecount" id="checkout_count"
+                               class="slider form-control-range">
+                    </div>
+                    <p><label for="range" class="mt-3">Total:</label>
+                        <span id="checkout_count_display"></span></p>
+                    <p>&pound; <span id="checkout_cost_display"></span></p>
+                    <button type="submit" class="btn btn-buy-custom-votes my-3"> Continue to secure payment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

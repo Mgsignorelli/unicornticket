@@ -1,0 +1,203 @@
+/*............................Main title */
+
+.main-title {
+    background: linear-gradient(to right, #B50457, #FF0279, #ED4E99, #FF9BCA, #FFDCEC);
+    margin: 10px;
+    font-weight: 300;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+/*............................Custom text */
+
+.text-create-ticket {
+    background: linear-gradient(to right, #B50457, #FF0279, #ED4E99, #FF9BCA, #FF9BCA);
+    font-weight: 300;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.text-pink {
+    color: #FF0279;
+}
+
+body > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) > h4.text-pink > a {
+    color: #C8FFDA;
+    text-shadow: 2px 2px #000000;
+}
+
+body > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) > h4.text-pink > a:hover {
+    color: #FF0279;
+    text-decoration: none;
+    text-shadow: none;
+    cursor: pointer;
+}
+
+.text-lightpink {
+    color: #FF9BCA !important;
+    text-shadow: 2px 2px #000000;
+}
+
+.text-lightgreen {
+    color: #C8FFDA !important;
+    text-shadow: 2px 2px #000000;
+}
+
+/*............................Navbar */
+
+.main-title-nav {
+    background: linear-gradient(to left, #B50457, #FF0279, #ED4E99, #FF9BCA, #FF9BCA);
+    margin: 10px;
+    font-weight: 300;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.navbar-dark {
+    -webkit-transition: all 0.35s;
+    -moz-transition: all 0.35s;
+    transition: all 0.35s;
+}
+
+
+/*............................Buttons */
+.btn-buy-votes {
+    background-color: #C8FFDA;
+    font-weight: 800;
+    margin: auto;
+    color: #000000;
+    border-width: 1px;
+    border-color: #000000;
+    outline: 1px solid black;
+}
+
+.btn-create-ticket {
+    background-color: #FF9BCA;
+    font-weight: 800;
+    margin: auto;
+    color: #000000;
+    border-width: 1px;
+    border-color: #000000;
+    outline: 1px solid black;
+}
+
+.btn-buy-1-vote {
+    background-color: #FF9BCA;
+    font-weight: 800;
+    margin: auto;
+    color: #000000;
+    outline: 1px solid black;
+}
+
+.btn-buy-5-votes {
+    background-color: #FF9BCA;
+    font-weight: 800;
+    margin: auto;
+    color: #000000;
+    outline: 1px solid black;
+}
+
+.btn-buy-10-votes {
+    background-color: #FF0279;
+    font-weight: 800;
+    margin: auto;
+    color: #000000;
+}
+
+.btn-buy-custom-votes {
+    background-color: #C8FFDA;
+    font-weight: 800;
+    margin: auto;
+    color: #000000;
+    outline: 1px solid black;
+
+}
+
+/*............................Table */
+
+.table-index {
+    padding: 1rem;
+    line-height: 45px;
+}
+
+.table-feature {
+    background-color: #C8FFDA;
+    color: #000000;
+    outline: 1px solid black;
+}
+
+.table-bug {
+    background-color: #FF9BCA;
+    color: #000000;
+    outline: 1px solid black;
+
+}
+
+/*..........................Card Ticket Show */
+.card-ticket-show {
+    background: linear-gradient(to right, #B50457, #FF0279, #ED4E99, #FF9BCA, #FF9BCA);
+    color: white;
+}
+
+/*..........................Alert */
+.alert-pink {
+    background: linear-gradient(to left, #B50457, #FF0279, #ED4E99, #FF9BCA, #FF9BCA);
+    color: black;
+    border: black;
+}
+
+.alert-pink-link {
+    color: #FFDCEC;
+}
+
+/*..........................Pagination */
+
+.pagination {
+    padding-top: 45px;
+}
+
+/*.............Vote slider */
+
+.slidecontainer {
+    width: 50%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 25px;
+    border-radius: 5px;
+    background: #FFDCEC;
+    outline: none;
+    opacity: 0.6;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #B50457;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #B50457;
+    cursor: pointer;
+}
+
+/*.......................Footer */
+
+.footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
