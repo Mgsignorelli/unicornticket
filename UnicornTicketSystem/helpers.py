@@ -5,8 +5,6 @@ import pytz
 
 
 def datetime_range(date, time_range):
-    print('date: ' + str(date))
-    print('time_range: ' + str(time_range))
     tz = pytz.timezone('Europe/London')
     if date.tzinfo:
         date = date.replace(tzinfo=None)
