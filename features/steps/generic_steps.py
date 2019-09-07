@@ -41,5 +41,8 @@ def step_impl(context, number):
     if number == 'some':
         number = 3
 
+    if number == 'no':
+        number = 0
+
     for i in range(number):
         context.model.featurevote_set.create()
