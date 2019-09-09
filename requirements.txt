@@ -1,5 +1,7 @@
 behave==1.2.6
 behave-django==1.2.0
+boto3==1.9.224
+botocore==1.12.224
 certifi==2019.3.9
 chardet==3.0.4
 coverage==4.5.3
@@ -8,9 +10,12 @@ Django==1.11.15
 django-bootstrap4==0.0.8
 django-dotenv==1.4.2
 django-forms-bootstrap==3.1.0
+django-storages==1.7.1
 django-vote==2.1.7
+docutils==0.15.2
 gunicorn==19.9.0
 idna==2.8
+jmespath==0.9.4
 parse==1.12.0
 parse-type==0.4.2
 psycopg2==2.8.2
@@ -19,6 +24,7 @@ python-dateutil==2.8.0
 pytz==2019.1
 PyYAML==5.1
 requests==2.21.0
+s3transfer==0.2.1
 selenium==3.141.0
 six==1.12.0
 splinter==0.10.0
