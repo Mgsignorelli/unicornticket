@@ -1,3 +1,5 @@
+#Populates test database with admin and regular user
+
 - model: auth.user
   pk: 1
   fields:
