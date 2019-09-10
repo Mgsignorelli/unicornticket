@@ -20,11 +20,7 @@
     <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 
-    <!-- Fonts -->
-    {#    <link href="https://fonts.googleapis.com/css?family=ABeeZee|Abril+Fatface|Didact+Gothic|Roboto+Slab&display=swap"#}
-    {#          rel="stylesheet">#}
-
-    <!-- Custom CSS -->
+    <!-- Custom CSS from AWS storage-->
     <link rel="stylesheet" href="https://unicorn-ticket-system.s3.eu-west-2.amazonaws.com/css/custom.css">
 
     {% block head_js %}
@@ -89,6 +85,7 @@
     </div>
 </nav>
 
+<!-- Messages to user -->
 
 {% if messages %}
     {% for message in messages %}
@@ -101,6 +98,8 @@
         </div>
     {% endfor %}
 {% endif %}
+
+<!-- Page content -->
 
 <hr>
 <div class="container">
@@ -116,6 +115,7 @@
 {% endblock %}
 
 
+<!-- Footer -->
 
 <hr>
 <div class="container mt-5">
@@ -128,6 +128,9 @@
     </div>
 
 </div>
+
+<!-- Scripts at bottom for speed -->
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
