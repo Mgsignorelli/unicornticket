@@ -2,6 +2,8 @@
 {% load bootstrap_tags %}
 {% block page_title %}{{ feature.title }}{% endblock %}
 
+{# Feature show content #}
+
 <div class="container">
     <div class="row">
         <div class="col-sm-8 mx-auto">
@@ -26,7 +28,10 @@
             {% else %}
                 <div class="col-12 my-3" align="center">
                     <div class="card card-ticket-show">
-                        <p><h6>Description:</h6><h4>{{ feature.description }}</h4>
+                        <p>
+                            <h6>Description:</h6>
+                            <p>{{ feature.description }}</p>
+                        </p>
                         <p><h6>Status:</h6><h4>{{ feature.status }}</h4>
                     </div>
                 </div>

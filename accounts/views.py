@@ -7,6 +7,8 @@ from accounts.forms import UserLoginForm, UserRegistrationForm
 from voteshop.helpers import calculate_cost
 
 
+# Account app login and logout views
+
 @login_required
 def logout(request):
     """Logs out a user"""
@@ -38,6 +40,9 @@ def login(request):
     return render(request, 'login.html', {'login_form': login_form})
 
 
+# Registration views
+
+
 def registration(request):
     """Renders registration page"""
     if request.user.is_authenticated:
@@ -60,6 +65,9 @@ def registration(request):
         registration_form = UserRegistrationForm()
     return render(request, 'registration.html', {
         "registration_form": registration_form})
+
+
+# User profile views, with order list display and pagination
 
 
 def user_profile(request):
