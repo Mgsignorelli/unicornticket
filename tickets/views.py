@@ -16,6 +16,9 @@ from tickets.models import Bug, Feature, BugVote, FeatureVote, BugWork, FeatureW
 from UnicornTicketSystem.helpers import datetime_range, get_model_count_for_date_range
 
 
+# Ticket app views
+
+# Main index with charts showing breakdown of worked-on features and bugs
 def index(request):
     chart_data = {
         'monthly': {
@@ -55,6 +58,7 @@ def index(request):
     return render(request, 'index.html', {'chart_data': json.dumps(chart_data), 'mostvoted': mostvoted})
 
 
+# Create ticket view
 @login_required()
 def create_ticket(request):
     """Allows Ticket Creation"""
@@ -85,6 +89,7 @@ def create_ticket(request):
     return render(request, 'ticket_create.html', {'form': form})
 
 
+# Bug display view
 def show_bug(request, id):
     bug = get_object_or_404(Bug, pk=id)
     user = auth.get_user(request)
@@ -105,6 +110,7 @@ def show_bug(request, id):
                    })
 
 
+# Bug vote view
 @login_required()
 def vote_bug(request, id, direction):
     bug = get_object_or_404(Bug, pk=id)
@@ -136,6 +142,7 @@ def vote_bug(request, id, direction):
     return redirect('show_bug', id=bug.id)
 
 
+# Feature display view
 def show_feature(request, id):
     feature = get_object_or_404(Feature, pk=id)
     user = auth.get_user(request)
@@ -159,6 +166,7 @@ def show_feature(request, id):
                    'user_has_votes': has_votes, 'user_is_staff': is_staff})
 
 
+# Feature vote view
 @login_required()
 def vote_feature(request, id):
     feature = get_object_or_404(Feature, pk=id)
@@ -182,6 +190,7 @@ def vote_feature(request, id):
     return redirect('show_feature', id=feature.id)
 
 
+# Comment view
 @login_required()
 def add_comment(request, id):
     url_name = resolve(request.path_info).url_name
@@ -209,6 +218,7 @@ def add_comment(request, id):
     return redirect(reverse(url_name.replace('comment', 'show'), args=(id)))
 
 
+# Index displays with pagination
 def index_bug(request):
     bugs_list = Bug.objects.annotate(votecount=Count('bugvote')).order_by('-votecount').all()
     paginator = Paginator(bugs_list, 5)
