@@ -23,6 +23,8 @@ from tickets import urls as tickets_urls
 from voteshop import urls as voteshop_urls
 from sales import urls as sales_urls
 
+# App level urls
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name="index"),
