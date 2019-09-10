@@ -2,6 +2,8 @@ from django.conf.urls import url
 from tickets.views import create_ticket, vote_bug, show_bug, show_feature, index_bug, index_feature, vote_feature, \
     add_comment
 
+# Ticket app urls
+
 urlpatterns = [
     url(r'^ticket/create', create_ticket, name="create_ticket"),
     url(r'^bug/(?P<id>[0-9]+)/vote/(?P<direction>(up|down))', vote_bug, name="vote_bug"),
