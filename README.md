@@ -16,24 +16,35 @@ The Unicorn Attractor App allows the user to emit our Super Secret Unicorn Frequ
 all the Unicorns. 
 The App is linked at the top right corner of the screen, in the Navbar. 
 
-The objective of the Helpdesk is to allow the users of the Unicorn Attractor App to report bugs and to request features 
-they would like to have in the Unicorn Attractor App. Users are allowed to vote on other Bugs and Features as well as 
-comment on each individually.
+_______
 
-Creating and Voting for Bugs is free of charge. Creating Features does not cost the user money either, but voting on them 
-requires a pre-bought vote. Votes can be bought from the Helpdesk in the Buy Votes section. The user is redirected to the
-Stripe checkout system to ensure secure card payments.
+The objective of the Helpdesk is to allow the users of the Unicorn Attractor App to report Bugs and to request Features 
+they would like to have in the Unicorn Attractor App. 
 
-
-In the Helpdesk home, a user can immediately see buttons that will take them to either Create a Ticket or to Buy Feature Votes.
-Below, the user finds graphics displaying the amount of worked on features for each day, week, month and year (last twelve months).
-The most voted Feature and Bug are also displayed.
+A logged in user can create a ticket as either a feature or a bug, comment on a ticket and buy votes from the vote shop.
+The user will need to have purchased votes to vote for a feature. Bugs can be upvoted free of charge. 
+An admin has all the actions of a user, plus the ability to edit and delete Tickets and Comments.
 
 An index with all existing Features and another one with all existing Bugs are visible for every user, logged in or not.
 These are linked from the Navbar at the top of the website. The Navbar has further links to Ticket Creation, Buy Votes,
 the Unicorn Attractor App, the user's profile and the capability of login and logout. 
 
-Users can view their purchases in their profile.
+The Unicorn Attractor App developer will spend half of their time working on the highest voted Feature.
+The breakdown of this work is displayed in the index through charts. 
+
+Comments have the user's name, but Bugs and Features can be requested and reported anonymously.
+Votes can be bought from the Helpdesk in the Buy Votes section, linked permanently in the Navbar. 
+The user is redirected to the Stripe checkout system to ensure secure card payments. 
+A user can see their order history in their profile, linked as well in the Navbar.
+
+In the Helpdesk home, a user can immediately see buttons that will take them to either Create a Ticket or to Buy Feature Votes.
+Below, the user finds graphics displaying the amount of worked on features for each day, week, month and year (last twelve months).
+The most voted Feature and Bug are also displayed.
+
+
+Use the following credentials for the Admin User:
+Username: admin
+Password: 1234qwer
 
 
 ## Technologies Used
@@ -77,6 +88,9 @@ Users can view their purchases in their profile.
 
 - Python PEP8 checker (http://pep8online.com/)
 
+- AWS - S3 storage bucket (https://aws.amazon.com/), to serve static files.
+
+- Boto3 to connect the S3 storage bucket to Django.
 
 ### Requirements
 - [Python 3.4.9](https://www.python.org/downloads/release/python-349/) is required.
