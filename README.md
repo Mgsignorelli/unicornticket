@@ -95,15 +95,6 @@ Password: 1234qwer
 ### Requirements
 - [Python 3.4.9](https://www.python.org/downloads/release/python-349/) is required.
 
-### Preparation
-- Clone repository
-- Copy `.env.example` to `.env` and enter values for all environmental variables listed.
-- Run `pip install -r requirements.txt` (or `pip3` if necessary for Python 3).
-- Run any migrations using:
-  - `python3 manage.py makemigrations`
-  - `python3 manage.py migrate`
-- Run `python3 manage.py collectstatic` to generate static files.
-- Run `python3 manage.py runserver` and browse to generated local URL.
 
 ## Testing
 
@@ -147,16 +138,26 @@ Postgresql Database is used in the deployed version instead of SQLite, which was
 suitable for Heroku, since Heroku deploys a managed container system and will therefore erase any added or edited 
 information in the live version with each deployment.
 
+The deployed version utilizes an Amazon Web Services S3 Storage Bucket to serve static files. These files are created by Heroku's build system.
+
 For environment variables in development .env was used. For deployment, the variables were manually set.
 
 
-Use the following credentials in order to test Admin function:
-Username: admin
-Password: 1234qwer
+### Preparation to run code locally
+- Clone repository
+- Copy `.env.example` to `.env` and enter values for all environmental variables listed.
+- Run `pip install -r requirements.txt` (or `pip3` if necessary for Python 3).
 
-### Requirements
-Python 3.4.9 is required. 
+### Set up
+- Run any migrations using `python3 manage.py migrate`
+- Run `python3 manage.py loaddata accounts` to seed database. 
+
+Use the following credentials in order to test Admin function:
+ - Username: admin
+ - Password: password
+
+- Run `python3 manage.py runserver` and browse to generated local URL.
 
 
 ### Media
-Image in Unicorn Attractor App adapted by me, from a royalty free image.
+Image in Unicorn Attractor App adapted by me from a royalty free image.
