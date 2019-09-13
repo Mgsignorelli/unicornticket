@@ -161,3 +161,7 @@ Use the following credentials in order to test Admin function:
 
 ### Media
 Image in Unicorn Attractor App adapted by me from a royalty free image.
+
+### Acknowledgements
+Inspiration for this project was obtained from Code Institute's Django Fullstack Frameworks Unit.
+Sections like the Accounts app were developed previously as coursework for this Module.
