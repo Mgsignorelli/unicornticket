@@ -143,11 +143,6 @@ The deployed version utilizes an Amazon Web Services S3 Storage Bucket to serve 
 For environment variables in development .env was used. For deployment, the variables were manually set.
 
 
-Use the following credentials in order to test Admin function:
-Username: admin
-Password: 1234qwer
-
-
 ### Preparation to run code locally
 - Clone repository
 - Copy `.env.example` to `.env` and enter values for all environmental variables listed.
@@ -155,7 +150,12 @@ Password: 1234qwer
 
 ### Set up
 - Run any migrations using `python3 manage.py migrate`
-- Run `python3 manage.py loaddata accounts` to seed database.
+- Run `python3 manage.py loaddata accounts` to seed database. 
+
+Use the following credentials in order to test Admin function:
+ - Username: admin
+ - Password: password
+
 - Run `python3 manage.py runserver` and browse to generated local URL.
 
 

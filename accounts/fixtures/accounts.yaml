@@ -18,7 +18,7 @@
 - model: auth.user
   pk: 2
   fields:
-    password: pbkdf2_sha256$36000$uNoZ0YONifsI$Mr6tu9vbBpgGrO+oi/clRkBAYCgp9QQHvlDBVQIb+TE=
+    password: pbkdf2_sha256$36000$zrGQ7FJsPExc$PamOuXyeyKkBSRJfDAYi9TTQ800Wvk9Z08s+yFbw9xY=
     is_superuser: true
     username: admin
     first_name: ''
