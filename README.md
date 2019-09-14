@@ -1,50 +1,51 @@
 # Support Ticket System - Django Frameworks Project
 
+
 [![Build Status](https://travis-ci.org/Mgsignorelli/unicornticket.svg?branch=master)](https://travis-ci.org/Mgsignorelli/unicornticket)
 
 This is the Django Fullstack Frameworks Unit Milestone Project, for Code Institute's Full Stack Web Developer Course.
 
+
 ## UX
-The following wireframe was designed to represent the required website skeleton.
+The following preliminary wireframe was designed to represent the required website skeleton. It depicts the necessary elements to compose the Helpdesk.
 
 ![Wireframe](static/img/uniMock1.png "Wireframe") 
 
 ## Features
-This Ticket System is the Unicorn Attractor App Helpdesk.
- 
-The Unicorn Attractor App allows the user to emit our Super Secret Unicorn Frequency from their mobile device and attract 
-all the Unicorns. 
-The App is linked at the top right corner of the screen, in the Navbar. 
-
-_______
-
-The objective of the Helpdesk is to allow the users of the Unicorn Attractor App to report Bugs and to request Features 
+This is the Helpdesk for the Unicorn Attractor App. The Unicorn Attractor App allows the user to emit our Super Secret Unicorn Frequency from their mobile device and attract 
+all the Unicorns. The App page is linked to from the Navbar in the top right corner of the screen. The objective of the Helpdesk is to allow the users of the Unicorn Attractor App to report Bugs and to request Features 
 they would like to have in the Unicorn Attractor App. 
 
-A logged in user can create a ticket as either a feature or a bug, comment on a ticket and buy votes from the vote shop.
-The user will need to have purchased votes to vote for a feature. Bugs can be upvoted free of charge. 
-An admin has all the actions of a user, plus the ability to edit and delete Tickets and Comments.
-
-An index with all existing Features and another one with all existing Bugs are visible for every user, logged in or not.
-These are linked from the Navbar at the top of the website. The Navbar has further links to Ticket Creation, Buy Votes,
-the Unicorn Attractor App, the user's profile and the capability of login and logout. 
-
-The Unicorn Attractor App developer will spend half of their time working on the highest voted Feature.
-The breakdown of this work is displayed in the index through charts. 
-
-Comments have the user's name, but Bugs and Features can be requested and reported anonymously.
-Votes can be bought from the Helpdesk in the Buy Votes section, linked permanently in the Navbar. 
-The user is redirected to the Stripe checkout system to ensure secure card payments. 
-A user can see their order history in their profile, linked as well in the Navbar.
 
 In the Helpdesk home, a user can immediately see buttons that will take them to either Create a Ticket or to Buy Feature Votes.
 Below, the user finds graphics displaying the amount of worked on features for each day, week, month and year (last twelve months).
-The most voted Feature and Bug are also displayed.
+The most voted Feature and Bug are also displayed. 
+The Unicorn Attractor App developer will spend half of their time working on the highest voted Feature.
+
+A logged in user can Create a Ticket as either a Feature or a Bug, Comment on a ticket and Buy Votes from the vote shop.
+The user will need to have purchased Votes to Vote for a feature. 
+Bugs can be upvoted free of charge.
+
+An admin has all the actions of a user, plus the ability to edit and delete Tickets and Comments. These actions are available in the admin panel.
+The admin panel also has the action of adding Worked On to a Feature or a Bug and to modify the Status of Tickets (Todo, Doing, Done).
+
+An index with all existing Features and another one with all existing Bugs are visible for every user, logged in or not. These are linked from the Navbar at the top of the website. The Navbar has further links to Ticket Creation, Buy Votes,
+the Unicorn Attractor App, the user's Profile and the actions of login and logout. 
+
+In their Profile, the user can see their Order History.
 
 
-Use the following credentials for the Admin User:
+Votes can be bought from the Helpdesk in the Buy Votes section, linked from the Navbar. 
+When purchasing votes, the user is redirected to the Stripe checkout system to ensure secure card payments. 
+
+
+
+
+Use the following credentials for the Admin User in the deployed version:
 Username: admin
 Password: 1234qwer
+
+The admin passwords are different due to a Postgres limitation in permitted passwords.
 
 
 ## Technologies Used
@@ -88,12 +89,15 @@ Password: 1234qwer
 
 - Python PEP8 checker (http://pep8online.com/)
 
-- AWS - S3 storage bucket (https://aws.amazon.com/), to serve static files.
+- Amazon Web Services - S3 storage bucket (https://aws.amazon.com/), to serve static files.
 
 - Boto3 to connect the S3 storage bucket to Django.
 
-### Requirements
+
+
+## Requirements
 - [Python 3.4.9](https://www.python.org/downloads/release/python-349/) is required.
+
 
 
 ## Testing
@@ -121,6 +125,7 @@ A. User Creation:
   8. Be allowed to vote on a Feature
   9. Logout with link in Navbar
   
+  
 ## Deployment
 
 This project was deployed through Heroku, it can be found here:
@@ -143,7 +148,9 @@ The deployed version utilizes an Amazon Web Services S3 Storage Bucket to serve 
 For environment variables in development .env was used. For deployment, the variables were manually set.
 
 
-### Preparation to run code locally
+
+## Run code locally
+### Preparation 
 - Clone repository
 - Copy `.env.example` to `.env` and enter values for all environmental variables listed.
 - Run `pip install -r requirements.txt` (or `pip3` if necessary for Python 3).
@@ -152,16 +159,19 @@ For environment variables in development .env was used. For deployment, the vari
 - Run any migrations using `python3 manage.py migrate`
 - Run `python3 manage.py loaddata accounts` to seed database. 
 
-Use the following credentials in order to test Admin function:
+Use the following credentials in order to test Admin function locally:
  - Username: admin
  - Password: password
 
 - Run `python3 manage.py runserver` and browse to generated local URL.
 
 
-### Media
-Image in Unicorn Attractor App adapted by me from a royalty free image.
 
-### Acknowledgements
+
+## Media
+Image in Unicorn Attractor App adapted by me from a Royalty-free stock vector from Shutterstock.com (ID: 766763503, Unicorn minimalistic face 
+horn cute sleeping, by Tereez/Shutterstock.com, https://shutr.bz/2kMHC27).
+
+## Acknowledgements
 Inspiration for this project was obtained from Code Institute's Django Fullstack Frameworks Unit.
 Sections like the Accounts app were developed previously as coursework for this Module.
