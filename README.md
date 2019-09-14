@@ -45,7 +45,7 @@ Use the following credentials for the Admin User in the deployed version:
 Username: admin
 Password: 1234qwer
 
-The admin passwords are different due to a Postgres limitation in permitted passwords.
+The admin passwords are different due to a Django limitation in live permitted passwords.
 
 
 ## Technologies Used
