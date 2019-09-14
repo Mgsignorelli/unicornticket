@@ -166,8 +166,11 @@ Use the following credentials in order to test Admin function locally:
 - Run `python3 manage.py runserver` and browse to generated local URL.
 
 
-### Media
-Image in Unicorn Attractor App adapted by me from a royalty free image.
+
+
+## Media
+Image in Unicorn Attractor App adapted by me from a Royalty-free stock vector from Shutterstock.com (ID: 766763503, Unicorn minimalistic face 
+horn cute sleeping, by Tereez/Shutterstock.com, https://shutr.bz/2kMHC27).
 
 ## Acknowledgements
 Inspiration for this project was obtained from Code Institute's Django Fullstack Frameworks Unit.
